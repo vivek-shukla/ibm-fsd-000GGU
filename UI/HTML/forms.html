@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>
+            forms
+        </title>  
+        <link href="https://fonts.googleapis.com/css?family=Barriecito|Ubuntu&display=swap" rel="stylesheet"> 
+        
+        <style type="text/css">  
+        body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+         input[type=text],input[type=email],input{
+             border: 1px solid hotpink;
+             border-radius: 4px;
+
+         }
+         input[type=submit]{
+             background: mediumseagreen;
+         } 
+         fieldset {
+             border-color: blueviolet;
+             margin:  10px 10px 0 0;
+             width: 50%;
+             float: left; 
+             /* display: inline; */
+             scroll-snap-type-y: y
+         }
+         fieldset legend {
+             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             font-size: 10mm;
+             color: aqua;
+         } 
+         label{
+             font-size: 12px;
+             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         } 
+         /* <!-- only effect anchor tag in this hierarchy --> */
+         nav ul li a{                            
+             text-decoration: black;
+             color: aqua;
+             font-style: italic;
+         }
+         nav ul li a:hover{
+             color: brown
+
+         }
+         nav ul li a:visited{
+             color: purple
+
+}
+
+         </style>
+    </head>
+    <body> 
+        <div>
+            <section>
+                <nav> 
+                    <ul>
+                   <li> <a href="https://ibm.ent.box.com/folder/0" target="_blank"> Home </a> </li>
+                   <li>  <a href=""> Contact </a> </li> 
+
+                </ul>
+                </nav>
+            </section>
+        </div>
+        <fieldset> <legend> User Details  </legend>
+        <form name=" User Details "action="" method="GET">
+
+        
+        
+        <table > 
+            <thead>
+                    <tr>
+                        <th colspan="2">
+                            User Details 
+    
+                        </th>
+                    </tr>
+                
+            </thead>
+            <tbody>
+            <tr>
+                    <th> First Name </th>
+                    <td> <input type="text" name="first name" placeholder="Your name"/>: </td>
+                    
+                </tr>
+                <tr>
+                            <th> Last Name </th>
+                    
+                    <td>
+                            <input type="text" name="first name" placeholder="Your name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th> <label for="password"></label> Password </th> 
+                    <td> <input type="password" name="password" placeholder="Enter your password"> </td>
+
+                </tr>
+                <tr> <th>Email </th>
+                        <td>
+                            <input type="email" name="email" placeholder="Enter your email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                       <td> <input type="number" max="15" min="10">  </td>
+                    </tr>
+                    <tr>ss
+                        <th> 
+                          <label for="dob"></label>  Date of Birth </th>
+                        <td> <input type="date" name="dob"> </td>
+                    </tr>
+                    <tr>
+                            <th> 
+                              <label for="dob"></label>  Time </th>
+                            <td> <input type="time" name="time"> </td>
+                        </tr>
+                        <tr>
+                                <th> 
+                                  <label for="dob"></label>  DTelephone </th>
+                                <td> <input type="telephone" name="dob"> </td>
+                            </tr>
+            </tbody>
+            <tfoot>
+                <tr> 
+                    <td> Submit </td>
+                    <td>
+                        <input type="submit" value="SAVE" name="SAVE" formmethod="GET" formaction="hello.html">
+                    </td>
+                </tr>
+                
+            </tfoot>
+        </table>
+    </form>
+</fieldset> 
+<fieldset>
+    <legend> Field  </legend>
+        <em> Hello </em>
+        <hr>
+        <br>
+        <bdo  dir="rtl"> Hello, how are you ?</bdo> <!-- how to render the content -->
+        <blockquote >  <!-- shift stuff to center -->
+            The poor dies, who care 
+        </blockquote> 
+        <code>
+            System.out.println("Hello word ")
+            int i=0;
+            if (i &gt;-1)
+        &nbsp;   
+        </code>
+    
+</fieldset>
+    </body>
+</html>
