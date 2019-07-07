@@ -1,0 +1,24 @@
+.Form-Input{
+    background-color: aquamarine;
+    margin: 2px 3px 15px 10px;
+    width:12em;
+    height: 2.5em;
+
+} 
+.Form-Input-shadow { 
+    background-color: peru;
+    background: linear-gradient(#8c3b31);
+
+}
+.form-submit{
+    cursor: pointer;
+} 
+.form-submit:hover{
+    color: blueviolet;
+}
+.form-submit-shadow{
+    background-color: peru;
+    background: linear-gradient(#8c3b31);
+
+
+}
