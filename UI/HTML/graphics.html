@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title> 
+            Graphics
+
+        </title> 
+        <style> 
+        body {
+    background: linear-gradient(135deg, lightblue 10%,#483bde 25% ,blue 40%);
+}
+        </style>
+    </head>
+       
+    <body>
+        <svg>
+            <circle cx="100" cy="100" r="50" fill="blue"  stroke="green">
+                <!-- stroke is color of border -->
+            <text>
+
+            </text>
+
+            </circle>
+        </svg> 
+        <svg>
+            <rect width="100" height="100" x="10" y="20">
+             <circle cy="40" cx="50" fill="green" r="15">
+
+             </circle>
+            </rect> 
+            
+        </svg> 
+        <svg>
+            <rect width="100" height="100" x="10" y="10" >
+                <animate attributeName="y" dur="2s" from="-30" to="50" repeatCount="indefinite" >
+
+                </animate>
+
+            </rect> 
+            
+
+        </svg> 
+        <svg> 
+                <rect width="100" height="100" x="10" y="10" fill="url(#Custom-Gradient)">
+                </rect>
+                <defs>
+                        <linearGradient id="Custom-Gradient">
+                            <stop stop-offset="10%" stop-color="blue"></stop>
+                            <stop stop-offset="25%" stop-color="green"></stop> 
+                            <stop stop-offset="50%" stop-color="orange"></stop>
+                            <stop stop-offset="100%" stop-color="black"></stop>
+        
+                        </linearGradient>
+                </defs>
+        </svg>
+    </body>
+</html>

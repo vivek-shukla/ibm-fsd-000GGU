@@ -1,0 +1,254 @@
+<html>
+    <head> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" integrity="sha256-p6xU9YulB7E2Ic62/PX+h59ayb3PBJ0WFTEQxq0EjHw=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.min.css" integrity="sha256-eZniZ8LGwFHGy3Dndt7l7eKikb8Dg+d2e1AvTP5NWPg=" crossorigin="anonymous" />
+
+ 
+    
+            <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+            <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+           integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+             crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js" type="text/javascript"></script>
+
+            
+
+    <script type='text/javascript'>
+    $(document).ready(()=>{
+        console.log("Jqueryy loaded")
+        $('#sign-up').hide()
+        $('#log-in').hide()
+        $('#emp').hide()
+        $('#content').hide()
+       
+
+        $('#sub').click(()=>{
+            var name = $('#name').val()
+            var age = $('#age').val()
+            var email = $('#email').val()
+            console.log(name)
+            console.log(age)
+            console.log(email)
+        })
+        // $('#content').html('<b>dyanmic content</b>') 
+        $('#sub').click(()=>{
+    //         // $('#sign-up').html(`<input id='name' type="text" placeholder="Enter Name " />
+    //         //     <input id='age' type="number" placeholder="Enter Age " />
+    //         //     <input id='email' type="email" placeholder="Enter Email" />
+    //         //     <input type="button" id="sub1" value="Sign-Up">`)
+                $('#sign-up').slideDown(2000);
+            $('#log-in').hide() 
+        
+            
+    }) 
+
+       $('#log').click(()=>{   
+
+          $("#log-in").slideDown(2000);
+
+    //     //    $('#log-in').html(`<input id='name1' type="text" placeholder="Enter Name " /> <input id='pass' type="password" placeholder="Enter Password " /
+    //     //        <input type="button" id="log1" value="Log-In">`) 
+            //    $('#log-in').show()
+            $('#sign-up').hide()
+       })
+    $('#sub1').click(()=>{
+       $.validator.addMethod('emailValidator',(value,elem)=>{
+        let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regex.test(value);
+    });
+});
+    $('#sign-up').validate({
+    rules:{
+        name: 'required',
+        age: {
+            required : true,
+            min : 18,
+        },
+        email:{
+            emailValidator: true
+        }
+    },
+    messages:{
+        name : 'Name cannot be left blank',
+        age: {
+            required : 'Age cannot be left blank',
+            min : `age cannot be more than than 18`
+        },
+        email: {
+            emailValidator: 'Invalid Email your@email.com'
+        }
+    }
+     });
+     $('#sub1').button();
+     $('#eSub').button()
+     $('#log1').button()
+     $('#sub').button();
+     $('#log').button();
+     $('#eSearchSub').button();
+     $('#top-menu').menu();
+     $('#toggle-sign-log').css({'margin-top':'50px'});
+     $('.frm').css({'margin-top':'50px'})
+     $('#log1').click(()=>{
+        var id = $('#name1').val()
+        var pass = $('#pass').val()
+        if(id=='admin' && pass=='admin') {
+            $('#sign-up').hide()
+           $('#log-in').hide()
+           $('#sub').hide()
+           $('#log').hide() 
+           $('#emp').show()
+           $('#content').show()
+        }
+        else {
+            alert("Invalid Credential")
+        }
+        })
+    $('#eSub').click(()=>{
+        var empName = $('#eName').val();
+        var empAge = $('#eAge').val();
+        var empEmail = $('#eEmail').val();
+        console.log(JSON.stringify({
+            name: empName,
+            age: empAge,
+            email: empEmail
+        }))
+
+        localStorage.setItem(empEmail,JSON.stringify({
+            name: empName,
+            age: empAge,
+            email: empEmail
+        }))
+    }) 
+    var emps = []
+    Object.keys(localStorage).forEach(key=>{
+        emps.push(JSON.parse(localStorage.getItem(key)).name)
+    }) 
+    console.log(emps)
+    $('#eSearch').autocomplete({
+        source: emps
+    })
+    var empArray = []
+    var foundArray = []
+    $('#eSearchSub').click(()=>{ 
+        let table =''
+        let rows = ''
+        searchedEmp = $('#eSearch').val()
+        Object.keys(localStorage).forEach(key=>{
+        empArray.push(JSON.parse(localStorage.getItem(key)))
+    }) 
+        empArray.forEach(emp=>{
+            if(emp.name==searchedEmp) {
+                foundArray.push(emp)
+            }
+        }) 
+        console.log(foundArray) 
+        foundArray.forEach(emp=>{
+            rows += `<tr>
+                    <td>${emp.name}</td>
+                    <td>${emp.age}</td>
+                    <td>${emp.email}</td>
+                </tr>`
+        })
+        table = `<table>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee Age</th>
+                    <th>Employee Email</th>
+                </tr>
+                ${rows}
+            </table>`
+        $('#tbl').html(table)
+    }) 
+
+  }); 
+    // $('#sub').click(()=>{
+    //     $('#sub').css
+    // })
+    $(':button').click(()=>{
+        $(':button').css({
+            'border': '5px solid blue',
+        })
+
+    })  
+    </script> 
+    <style type="text\css">
+       #top-menu {
+  background: #DA4453;
+  overflow: hidden;
+}
+ ul { margin: 0 0 2em; }
+ #top-menu ul li { float: left; }
+ #top-menu ul li  {
+  display: block;
+  background: #DA4453;
+  color: #fff;
+  text-decoration: none;
+  padding: 1em;
+  cursor: pointer;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+
+nav ul li a:hover,
+nav ul li span:hover { background: #ED5565; }
+
+    </style>
+  
+    </head> 
+    <body> 
+            <header>
+                    <ul id="top-menu">
+                        <div>Home</div> 
+                       <div>About us</div>
+                    <li id="emp"> 
+                        Employee 
+                        <ul>
+                                <li ><div>Edit Employee</div></li>
+        
+                                <li><div>Delete Employee</div></li>
+        
+                        </ul>
+                     </li>
+                    </ul>
+                </header>
+        
+            <div id="toggle-sign-log">  <input type="button" id="sub" value="Sign-Up">
+            <input type="button" id="log" value="Log-In">  </div>
+        
+        <!-- <fieldset id='sign-up-fieldset'> -->
+            <form class='frm' action="" id="sign-up">
+                    <input id='name' name="name" type="text" placeholder="Enter Name " /> <br> <br>
+                    <input id='age' name="age" type="text" placeholder="Enter Age " /> <br> <br>
+                    <input id='email' name="email" type="text" placeholder="Enter Email" /> <br> <br>
+                    <input type="submit" id="sub1" value="Sign-Up">    
+            </form>
+        <!-- </fieldset> -->
+        <fieldset class='frm' id="log-in">
+                <input id='name1' type="text" placeholder="Enter Name " /> <br> <br> <input id='pass' type="password" placeholder="Enter Password " /> <br> <br>
+                <input type="button" id="log1" value="Log-In">
+                
+        </fieldset>
+        <div id="content" >
+        <fieldset class='frm' id='logged-in'>
+                <input id='eName' name="eName" type="text" placeholder="Enter Employee Name " /> <br> <br>
+                <input id='eAge' name="eAge" type="text" placeholder="Enter Employee Age" /> <br> <br>
+                <input id='eEmail' name="eEmail" type="text" placeholder="Enter Employee Email" /> <br> <br>
+                <input type="submit" id="eSub" value="Register Employee">
+        
+        </fieldset>
+        <fieldset class="frm" id="serach"> 
+               <input type="text" id="eSearch" type="text" placeholder="Search Employees " >
+               <input type="submit" id="eSearchSub" value="Search">
+
+        </fieldset> 
+        <div id="tbl">
+            
+        </div>
+        </div>
+    </body>
+</html>

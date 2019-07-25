@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>
+            Calculator 
+        </title> 
+        <script type="text/javascript" src="calculation.js"></script>
+    </head>
+    <body>
+        <div>
+            <input type="text" placeholder="Enter Number " id="input"> 
+        </div>
+        <table>
+            <tr>
+                <td>
+                       <input type="button" id="1" value="1" onclick="showOnScreen('1')">
+                </td>
+                <td>
+                    <input type="button" id="2" value="2" onclick="showOnScreen('2')">
+                </td>
+                <td>
+                    <input type="button" id="3" value="3" onclick="showOnScreen('3')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                       <input type="button" id="4" value="4" onclick="showOnScreen('4')">
+                </td>
+                <td>
+                    <input type="button" id="5" value="5" onclick="showOnScreen('5')">
+                </td>
+                <td>
+                    <input type="button" id="6" value="6" onclick="showOnScreen('6')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                       <input type="button" id="7" value="7" onclick="showOnScreen('7')">
+                </td>
+                <td>
+                    <input type="button" id="8" value="8" onclick="showOnScreen('8')">
+                </td>
+                <td>
+                    <input type="button" id="9" value="9" onclick="showOnScreen('9')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                       <input type="button" id="." value="." onclick="showOnScreen('.')">
+                </td>
+                <td>
+                    <input type="button" id="0" value="0" onclick="showOnScreen('0')">
+                </td>
+                <td>
+                    <input type="button" id="=" value="=" onclick="showResult()">
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                       <input type="button" value="+" onclick="operation('+')">
+                </td>
+                <td>
+                    <input type="button" value="*" onclick="operation('*')">
+                </td>
+                <td>
+                    <input type="button" value="/" onclick="operation('/')">
+                </td>
+                <td>
+                    <input type="button" value="-" onclick="operation('-')">
+                </td>
+            </tr> 
+        </table>
+    </body>
+</html>

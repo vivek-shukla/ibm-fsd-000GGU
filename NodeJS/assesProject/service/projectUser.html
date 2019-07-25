@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body onload="fetchProject()" > 
+    <div class="container">
+    <div>
+            <button class="btn btn-primary" id="fetchProject">View Project</button>
+            <button class="btn btn-primary" id="fetchRelation">See Project and User Relationship</button>
+            <div id="projectTable"></div>
+    </div>
+    <form action="">
+            <h3> Select Project and User </h3>
+            <div>
+                    Project Title: <select id="projectDropDown">        
+                        </select>
+            </div>
+            <div>
+                    User Name: <select id="showUser" onclick="">        
+                        </select> 
+
+            </div>
+            <div>
+                    <button class="btn btn-info" id="assignRelation">Assign Relationship</button> 
+            </div>
+               
+    </form> 
+    <div> 
+        <fieldset>
+            <legend> Add User </legend>
+                <form action="">
+                        <div>
+                            <input type="text" id="username" placeholder="Enter Username">
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Enter Email Id">
+                        </div>
+                        <div>
+                            <input type="button" class="btn btn-info"  id="addUser" value="Submit User" /> 
+                        </div>
+                </form>
+
+        </fieldset>  
+    </div>
+    </div>
+      
+</body>
+<script> 
+        document.getElementById('fetchProject').addEventListener('click',fetchProject)
+        document.getElementById('fetchRelation').addEventListener('click',fetchRelation)
+        document.getElementById('projectDropDown').addEventListener('click',showUser)
+        document.getElementById('assignRelation').addEventListener('click',assignRelation)
+        document.getElementById('addUser').addEventListener('click',addUser)
+        function fetchProject() {
+            const url = 'http://localhost:1269/project'
+            fetch(url)
+            .then(res=>res.json())
+            .then(data=>{
+                let row=''
+                let projectDropDown = ''
+                data.projects.forEach(project=>{
+                    row += `<tr>
+                                 <td>${project.id}</td>
+                                 <td>${project.name}</td>
+                                 <td>${project.description}</td>
+                           </tr>`
+                     projectDropDown +=`<option value="${project.id}">${project.name}</option>`
+     
+                })
+                let table = `<table>
+                                     <tr>
+                                         <th>
+                                             Project Id
+                                         </th>
+                                         <th>
+                                             Project Name
+                                         </th>
+                                         <th>
+                                             Project Description
+                                         </th>
+                                     </tr>
+                                     ${row}
+                             </table>`
+                 document.getElementById('projectTable').innerHTML = table;  
+                 document.getElementById('projectDropDown').innerHTML = projectDropDown;
+            })
+        } 
+        function fetchRelation() {
+            url = 'http://localhost:1269/relation'
+            fetch(url)
+            .then(res=>res.json())
+            .then(data=>{
+                let row=''
+                console.log(data)
+                data.relation.forEach(Relation=>{
+                    row += `<tr>
+                                 <td>${Relation.projectId}</td>
+                                 <td>${Relation.userId}</td>
+                           </tr>`
+                })
+                let table = `<table>
+                                     <tr>
+                                         <th>
+                                             Project Id
+                                         </th>
+                                         <th>
+                                            Assigned User Id
+                                         </th>
+                                     </tr>
+                                     ${row}
+                             </table>`
+                 document.getElementById('projectTable').innerHTML = table;
+        })
+        }
+        function showUser() {
+            let url = 'http://localhost:1269/relation'
+            let _url = 'http://localhost:1269/user'
+            let unavailableUser = []
+            let totalUser = []
+            let availableUser =[]
+            fetch(url)
+            .then(res=>res.json())
+            .then(data=>{
+                console.log("relation data")
+               data.relation.forEach(relation=>{
+                   unavailableUser.push(relation.userId)
+                   console.log(unavailableUser)
+               })
+            })
+            fetch(_url)
+            .then(res=>res.json())
+            .then(data=>{
+                console.log('user data')
+                data.users.forEach(user=>{
+                    totalUser.push(user)
+                })
+                console.log(totalUser)
+            })
+            .then(()=>{ 
+                let userDropDown =''
+
+                totalUser.forEach(user=>{
+                console.log
+                if(unavailableUser.find(uUser=>{
+                    return uUser == user.id
+                })) { }
+                else {
+                    availableUser.push(user)
+                }
+            })
+            availableUser.forEach(user=>{ 
+                userDropDown +=`<option value="${user.id}">${user.name}</option>`
+            })
+            document.getElementById('showUser').innerHTML = userDropDown
+            })
+           
+        }
+        function assignRelation() {
+            const userId = document.getElementById('showUser').value
+            const projectId = document.getElementById('projectDropDown').value
+            console.log(userId,projectId)
+            url = 'http://localhost:1269/relation/add'
+            fetch(url,{
+                   method : 'POST',
+                   headers:{
+                       'content-type': 'application/json'
+                         },
+                   body:JSON.stringify({
+                   pId: projectId,
+                   uId: userId })
+                 })
+                 .then(res=>console.log(res.json()))
+          }
+          function addUser() {
+              let nextid = 0
+              const username = document.getElementById('username').value
+              const email = document.getElementById('email').value
+              console.log(username,email)
+              const url = 'http://localhost:1269/user/nextId'
+              fetch(url)
+              .then(res=>res.json())
+              .then(res=>{
+                nextid = res.nextId;
+                  console.log(nextid);
+              console.log('inside then')
+              const _url = 'http://localhost:1269/user/add'
+              fetch(_url,{
+                   method : 'POST',
+                   headers:{
+                       'content-type': 'application/json'
+                         },
+                   body:JSON.stringify({
+                   id: nextid,
+                   name: username,
+                   email: email })
+                })
+                .then(res=>res.json())
+                .then(console.log(res))
+
+                
+              });
+          }
+     </script>
+
+</html> 
+

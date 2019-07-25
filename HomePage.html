@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Food</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+    src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script> 
+       
+        $(document).ready(()=> 
+        { 
+        $('#log-in').hide();
+        console.log("inside ready function ")
+        $('#logIn-btn a').click(()=>{
+        // $('#log-in').show()
+        $('#log-in').slideToggle(2000)
+     })
+    });
+    </script>
+  </head>
+  <body >
+     <style media="screen">
+       html {
+         scroll-behavior: smooth;
+       }
+       .carousel-container{
+          width: 700px;
+          overflow: hidden;
+          margin-left: 100px;
+          margin-top: 75px;
+          box-shadow: 0 0 10px black;
+          float: left;
+          
+       }
+
+       img {
+         height: 400px;
+         width: 700px;
+         
+       }
+       .carousel-slide {
+         display: flex;
+       }
+       #prev {
+         position: absolute;
+         top: 63%;
+         z-index: 10;
+         left: 8%;
+         font-size: 30px;
+         color: white;
+         opacity: 0.7;
+         cursor: pointer;
+       }
+
+       #next {
+         position: absolute;
+         top: 63%;
+         z-index: 10;
+         right: 52%;
+         font-size: 30px;
+         color: white;
+         opacity: 0.7;
+         cursor: pointer;
+       }
+       .form-control {
+         width: 200px;
+         align : center;
+       }
+
+
+       body {
+        /* https://libbyhealth.com/wp-content/uploads/2017/02/OH71GZ01-1024x541.jpg */
+         background-image: url("https://d39l2hkdp2esp1.cloudfront.net/img/photo/140991/140991_00_2x.jpg");
+         /* background-repeat: no-repeat; */
+         background-size: 100%;
+
+
+        }
+        .container {
+          color: "white";
+        }
+        #jumbo{
+          margin-left: 50px;
+          margin-top: 50px;
+        }
+        /* h4 {
+          color: white;
+        } */
+        #scroll {
+          margin-left: 50px;
+          margin-top: 100px;
+          margin-right: 200px;
+          margin-bottom:100px;
+        } 
+        #log-in{
+          margin-right: 15%;
+          float:right;
+        } 
+        #Restaurant { 
+          margin-top: 40%;
+          text-align: center;
+          float: center;
+          background-image: url('RestImage.png');
+          height: 400px;
+          padding-top: 9%;
+          box-shadow: 0 0 10px black;
+
+        } 
+        #search-icon {
+          color: black;
+          background-color: black;
+        }
+        #RestaurantName {
+          margin-left: 43%;
+          align-self: center;
+          align-content: center;
+        }
+        #Contact {
+          box-shadow: 0 0 10px black;
+          background-color: #292d31;
+          color: #fff;
+          text-align: center;
+          font: normal 13px/15px proxima-nova,sans-serif;
+        }
+        #subEmail { 
+          margin-left: 44%;
+          align-self: center;
+          align-content: center;
+
+        }
+        .fa {
+          padding: 20px;
+          font-size: 30px;
+          width: 50px;
+          text-align: center;
+         text-decoration: none;
+}
+        
+      
+     </style>
+    <!-- NAVBAR  -->
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> -->
+      <a class="navbar-brand" href="Welcome Page.html">Smart Food</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- <li class="active"><a href="">Home</a></li> -->
+      <li><a href="#Restaurant">Find Restaurant</a></li>
+      <li><a href="#Contact">Contact Us</a></li>
+      <li id="logIn-btn"> <a href="#">Log In</a> </li>
+    </ul>
+
+    </div>
+    </nav>
+
+
+   <fieldset id="jumbo">
+     <span class="jumbotron">
+       <h1 >Welcome to Smart Food </h1>
+       <h4> At smart food our aim is to provide healthy and delicious food based on your diet and cuisine preference </h4>
+    </span> 
+   </fieldset> 
+   <i class="fas fa-search-location" id="search-icon"></i> 
+   <div class="carousel-container">
+      <i class="fa fa-arrow-left" id="prev" aria-hidden="true"></i>
+      <i class="fa fa-arrow-right" id="next" aria-hidden="true"></i>
+     <div class="carousel-slide">
+        <img src="food3.jpg" id="lastClone" alt="">
+       <img src="food1.jpg" id="" alt="">
+       <img src="food2.jpg" id="" alt="">
+       <img src="food3.jpg" id="" alt="">
+       <img src="food1.jpg" id="firstClone"alt="">
+     </div>
+   </div > 
+    <fieldset id="log-in">
+      <h2 >Log In</h2>
+    <form class="frm" method="post" >
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username </label>
+          <input type="text" class="form-control" id="username" placeholder="Enter username" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="password" placeholder=" Enter Password" value="">
+        </div>
+        <button type="submit" class="btn btn-default" id="sub" onclick="#" >Submit</button>
+    </form>
+       <a href="index.html"> New User? Register Now</a>
+ 
+ 
+    </fieldset>
+   <div id="Restaurant">
+      <fieldset id="">
+        <h2 >Search Restaurant</h2>
+      <form class="frm" method="post" >
+          <div class="form-group">
+            <input type="text" class="form-control" id="RestaurantName" placeholder="Search Nearby Restaurant" value=""> 
+            
+          </div>
+          <!-- <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder=" Enter Password" value="">
+          </div> -->
+          <button type="submit" class="btn btn-default" id="searchRest" onclick="#" >Search  </button>
+      </form>
+      </fieldset>
+  
+     </div> 
+     <div id="Contact">
+      <fieldset id="">
+        <h2 >Contact Us</h2>
+      <form class="frm" method="post" >
+          <div class="form-group">
+            <input type="text" class="form-control" id="subEmail" placeholder="Enter Email" value=""> 
+          </div>
+          <div class="form-group">
+          <button type="submit" class="btn btn-default" id="subscribe" onclick="#" > Subscribe Us </button>
+         </div>
+          <h3>Follow  Us </h3>
+       </form>
+
+       <!-- Add font awesome icons -->
+       <a href="#" class="fa fa-facebook"></a>
+       <a href="#" class="fa fa-twitter"></a>
+       <a href="#" class="fa fa-instagram"></a>
+      </fieldset>
+      </div>
+          <!-- <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder=" Enter Password" value="">
+          </div> -->
+      
+  
+     </div>
+</body>
+<script>
+  const carouselSlide = document.querySelector('.carousel-slide')
+  console.log(carouselSlide)
+  const carouselImage = document.querySelectorAll('.carousel-slide img')
+  const preBtn = document.querySelector('#prev')
+  const nxtBtn = document.querySelector('#next') 
+  let counter = 1;
+  const size = carouselImage[0].clientWidth;
+  carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+  // button listenrs 
+  nxtBtn.addEventListener('click',()=>{
+    
+    carouselSlide.style.transition = "transform 0.4s ease-in-out";
+    counter++;
+    console.log(counter)
+    carouselSlide.style.transform= 'translateX(' + (-size * counter) + 'px)';
+  })
+  preBtn.addEventListener('click',()=>{
+   
+    carouselSlide.style.transition = "transform 0.4s ease-in-out";
+    counter--;
+    console.log(counter)
+    carouselSlide.style.transform= 'translateX(' + (-size * counter) + 'px)';
+  })
+  carouselSlide.addEventListener('transitionend',()=>{
+    console.log(carouselImage[counter].id)
+    if(carouselImage[counter].id=="lastClone") {
+      carouselSlide.style.transition='none';
+      counter=carouselImage.length-2;
+      carouselSlide.style.transform= 'translateX(' + (-size * counter) + 'px)';
+
+    }
+    if(carouselImage[counter].id=="firstClone") {
+      carouselSlide.style.transition='none';
+      counter=carouselImage.length-counter;
+      carouselSlide.style.transform= 'translateX(' + (-size * counter) + 'px)';
+
+    }
+  })
+</script>
+</html>

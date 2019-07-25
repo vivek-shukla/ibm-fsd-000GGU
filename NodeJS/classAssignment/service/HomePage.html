@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <title>Product Cart</title>
+    <style> 
+      .jumbotron {
+      background: none;
+      color:white
+      } 
+      .container {
+          padding-left: 39%
+      }
+      body {
+          background: url('https://www.gemius.com/files/PL/Fotolia_70869411_Subscription_Monthly_M.jpg')
+      }
+      #showProduct {
+          /* background-image: url('https://docs.microsoft.com/en-us/windows/uwp/design/style/images/icons/icon-shopping-cart.svg'); */
+          /* https://docs.microsoft.com/en-us/windows/uwp/design/style/images/icons/icon-shopping-cart.svg */
+          background: url('https://cdn.dribbble.com/users/1180825/screenshots/2965077/daily-ui-058.gif') no-repeat top left;
+          background-position: inherit;
+          background-size: cover;
+          border: none;
+          padding: 2px 3px;
+          length: 300px;
+          width: 90px;
+      }
+      table,div {
+          color: white
+      }
+      table,tr,td,th {
+          border: 2px solid white
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1> Welcome to IBM Cart</h1>
+        </div>
+        <form action="">
+                <input type="text" id="toBeSearched" placeholder="Enter Product to search">
+                <input type="button" id="searchItem" class="btn btn-primary" value="Serach Item" >
+                <input type="button" id="seeProduct" class="btn btn-info" value="See All Product" >
+
+        </form>
+        <div id="showProductTable">
+            
+        </div>   
+        <div id="addToCart">
+                <input type="button" id="addProduct" class="btn btn-info" value="Add to Cart " >
+        </div> <br>
+        <div id="showCart">
+                <input type="button" id="showProduct" class="btn btn-primary btn-lg" value=" " style="color: black" >
+        </div> <br>
+        <div id="showCartTable">
+
+        </div> 
+        <div id="div-grandTotal">
+
+        </div> 
+        <div id="Payment"> 
+                <input type="button" id="pay" class="btn btn-success" value="Payment">
+        </div>
+    </div>   
+
+</body>
+<script> 
+       document.getElementById('searchItem').addEventListener('click',searchProduct)
+       document.getElementById('seeProduct').addEventListener('click',seeProduct)
+       document.getElementById('addProduct').addEventListener('click',addProductToCart)
+       document.getElementById('showCart').addEventListener('click',showCart)
+       document.getElementById('pay').addEventListener('click',proceedToPay)
+
+       function changeQuantity(basePrice,op,i) { 
+           quantity = parseInt(document.getElementById(`quantity${i}`).innerText)
+           if(op =='INC') { 
+               console.log('INC');
+            quantity = quantity + 1;
+            if(quantity>10) {
+               quantity=10
+            }
+           }
+           if(op =='DEC') {
+            quantity-- 
+            if(quantity<0) {
+                quantity=0
+            }
+            //  quat--
+           }             
+           document.getElementById(`quantity${i}`).innerHTML=quantity; 
+           if(i==''){
+            document.getElementById(`Totaprice${i}`).innerText=IncMRP(basePrice,quantity,0) 
+           }
+           else{
+            document.getElementById(`Totaprice${i}`).innerText=IncMRP(basePrice,quantity,op)
+           }
+        //    document.getElementById(`Totaprice${i}`).innerText=IncMRP(basePrice,quantity,op)
+       } 
+       
+       function IncMRP(basePrice,quantity,op) { 
+           if(op==0) {
+            return basePrice * quantity
+           }
+           else { 
+            let grandTotal = parseInt(document.getElementById('grandTotal').innerText) 
+            console.log(grandTotal)
+            if(quantity==0) {} 
+            else {
+                 if(op =='INC') { 
+                grandTotal = grandTotal+basePrice
+                  }
+               else {
+                grandTotal = grandTotal-basePrice
+            }
+            }
+            // if(op =='INC') { 
+            //     grandTotal = grandTotal+basePrice
+            // }
+            // else {
+            //     grandTotal = grandTotal-basePrice
+            // }
+               document.getElementById('grandTotal').innerText=grandTotal;
+               return basePrice * quantity
+           }
+            // grandTotal = parseInt(document.getElementById('grandTotal').innerText) 
+            // console.log(grandTotal)
+            // grandTotal = grandTotal + (basePrice * quantity)
+            // var total= `<h5> Grand Total: ${grandTotal} </h5>`
+            // document.getElementById('showCartTable').innerHTML=table; 
+            
+           
+       }
+       localStorage.setItem(previousCurrency,cur) 
+       function changeCurrency(cur)
+       {   
+           localStorage.setItem(previousCurrency,cur) 
+           var Prices = document.getElementsByName('price')
+           console.log(Prices)
+           console.log(Prices[0].innerText)
+           Prices.forEach(price=>{ 
+           
+              if(cur=="usd") {
+                var mrp = parseInt(price.innerText)
+                mrp = mrp / 60 
+                price.innerText = mrp
+              }
+              if(cur=="euro") {
+                var mrp = parseInt(price.innerText)
+                mrp = mrp / 70 
+                price.innerText = mrp
+              }
+           })
+           
+       }
+       function seeProduct() {
+           const url = "http://localhost:1220/product"
+           fetch(url)
+           .then(res=>res.json())
+           .then(data=>{ 
+              // let quantity = document.getElementById('quantity').innerText
+               let row=''
+               data.Products.forEach(product => { 
+                   row += `<tr>
+                    <td>${product.name}</td>
+                    <td>${product.quantity}</td>
+                    <td name="price" >${product.price}</td>
+                </tr>`
+  
+               });
+               let table =`<table>
+                <tr>
+                    <th>Product Item</th>
+                    <th>Quantity</th>
+                    <th>MRP  <select id="curr" onchange ="changeCurrency(document.getElementById('curr').value)">
+                                <option  value="inr">Inr</option>
+                                <option  value="usd">USD</option>
+                                <option  value="euro">Euro</option>
+                            </select> </th>
+                    </tr>
+                ${row}
+                </table>`
+            document.getElementById('showProductTable').innerHTML=table
+               console.log(data)
+           })
+
+           console.log("See Product") 
+
+       } 
+       function searchProduct() { 
+           productName = document.getElementById('toBeSearched').value
+           console.log(productName) 
+           let url = 'http://localhost:1220/product/search'
+           fetch(url,{
+               method: 'POST',
+               headers: {
+                   'content-type':'application/json'
+               },
+                body: JSON.stringify({
+                    name: productName
+                })   
+           })
+           .then(res=>res.json())
+           .then(data=>{ 
+               let row = ''
+               row += `<tr>
+                    <td id="name">${data.Item.name}</td>
+                    <td id=""><input type="button" value='-' id="neg" onclick="changeQuantity(${data.Item.price},'DEC','')" /><span id ="quantity">0</span><input type="button" value='+' id='plus' onclick="changeQuantity(${data.Item.price},'INC','')"/></td>
+                    <td id="basePrice">${data.Item.price}</td>
+                    <td id="Totaprice"> 0 </td>
+                </tr>` 
+            let table = ''
+             
+            table =`<table>
+                <tr>
+                    <th> Item </th>
+                    <th> Quantity </th>
+                    <th> MRP </th>
+                    <th> Total </th>
+                </tr>
+                ${row}
+            </table>`
+
+            document.getElementById('showProductTable').innerHTML=table
+           })
+
+       } 
+
+    //    let cartItem = 0
+       function addProductToCart() {
+           let url = 'http://localhost:1220/cart/addItem'
+           fetch(url,{
+               method: 'POST',
+               headers: {
+                'content-type':'application/json'
+               },
+               body: JSON.stringify({ 
+                   name: document.getElementById('name').innerText ,
+                   quantity: parseInt(document.getElementById('quantity').innerText) ,
+                   basePrice: parseInt(document.getElementById('basePrice').innerText) ,
+                   totlPrice: parseInt(document.getElementById('Totaprice').innerText),
+               })
+           })
+           .then(res=>res.json())
+           .then(data=>{
+               console.log(data) 
+               let cartItem = data.cartItems.length 
+               console.log(cartItem)
+               document.getElementById('showProduct').value = cartItem
+           }) 
+         
+       }
+       function showCart()
+       {
+           let url = 'http://localhost:1220/cart'
+           fetch(url)
+           .then(res=>res.json())
+           .then(data=>{
+               let row =''
+               let i=0;
+               let grandTotal = 0
+               data.cartItems.forEach(item=>{
+                   row += `<tr>
+                                <td>${item.name}</td>
+                                <td><input type="button" value='-' id="${i+1}" onclick="changeQuantity(${item.basePrice},'DEC',${i+1})" /><span id ="quantity${i+1}">${item.quantity}</span><input type="button" value='+' id='${i+1}' onclick="changeQuantity(${item.basePrice},'INC',${i+1})"/></td>
+                                <td>${item.basePrice}</td>
+                                <td id="Totaprice${i+1}" >${item.totlPrice}</td>
+                        </tr>`
+                    grandTotal = grandTotal + item.totlPrice
+                    i = i+1
+               })
+            let table = `<table>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>MRP</th>
+                    <th> Total </th>
+                </tr>
+                ${row}
+            </table>
+            `
+            let gdotal = `<h5> Grand Total: </h5> <h4 id="grandTotal" > ${grandTotal} </h4>`
+            document.getElementById('showCartTable').innerHTML=table;
+            document.getElementById('div-grandTotal').innerHTML= gdotal;
+            console.log(document.getElementById('grandTotal').innerText)
+
+           })
+       } 
+       function proceedToPay() 
+       {
+           document.location = 'payment.html'
+       }
+       
+</script>
+</html>
+
+
+
