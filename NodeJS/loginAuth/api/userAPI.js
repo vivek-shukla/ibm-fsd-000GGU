@@ -11,8 +11,10 @@ server.get('/',(req,res)=>{
 })
 
 server.post('/login',(req,res)=>{
-    var validUser = userObj.isValid(req.body)
-    var
+        res.status(200).json({
+            response: userObj.generateToken(req.body) 
+        })
+
     // if(validUser != null && validUser != undefined) 
     // {
     //     res.status(200).json({
@@ -20,3 +22,5 @@ server.post('/login',(req,res)=>{
     //     })
     // }
 })
+
+module.exports.userRoute = server

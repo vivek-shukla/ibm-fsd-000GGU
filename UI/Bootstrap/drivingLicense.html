@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Driving License</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        .col-1 img {
+            height: 150px;
+            width: 150px
+        } 
+        .col-7 {
+            padding-top: 50px;
+        }
+        #chip {
+            height: 80px;
+            width: 100px;
+            background-size: cover;
+        }
+        #dob {
+            padding-top: 20px
+        }
+        #details {
+            padding-top: 20px;
+            padding-left: 30px
+        }
+        #qr 
+        {
+            padding-top: 20px;
+            padding-right: 30px;
+        } 
+        input {
+            box-align: center;
+        }
+        .col-3 
+        {
+            text-align: center
+        }
+        #save {
+            color: green;
+        }
+        
+    </style>
+    <script type="text/javascript">
+    const edit = ()=>{
+        document.getElementById('label-dob').style.display = "none";
+        document.getElementById('dateOfBirth').style.display = "block";
+        document.getElementById('label-doi').style.display = "none";
+        document.getElementById('dateOfIssue').style.display = "block";
+        document.getElementById('label-validity').style.display = "none";
+        document.getElementById('validTill').style.display = "block";
+        document.getElementById('label-bloodGroup').style.display = "none";
+        document.getElementById('bloodGroup').style.display = "block";
+        document.getElementById('profileImage').style.display = "none";
+        document.getElementById('profile-input').style.display = "block";
+        document.getElementById('label-name').style.display = "none";
+        document.getElementById('name').style.display = "block";
+        document.getElementById('label-fhname').style.display = "none";
+        document.getElementById('fhname').style.display = "block";
+        document.getElementById('click').style.display = "none";
+        document.getElementById('save').style.display = "block";
+
+    }
+    const save = () => { 
+        var dateOfBirth = document.getElementById('dateOfBirth').value
+        document.getElementById('label-dob').innerHTML = `<h6>${dateOfBirth}</h6>`
+        document.getElementById('label-dob').style.display = "block";
+        document.getElementById('dateOfBirth').style.display = "none";
+        var dateOfIssue = document.getElementById('dateOfIssue').value
+        document.getElementById('label-doi').innerHTML = `<h6>${dateOfIssue}</h6>`
+        document.getElementById('label-doi').style.display = "block";
+        document.getElementById('dateOfIssue').style.display = "none";
+        var validTill = document.getElementById('validTill').value
+        document.getElementById('label-validity').innerHTML = `<h6>${validTill}</h6>`
+        document.getElementById('label-validity').style.display = "block";
+        document.getElementById('validTill').style.display = "none";
+        var bloodGroup = document.getElementById('bloodGroup').value
+        document.getElementById('label-bloodGroup').innerHTML = `<h6>${bloodGroup}</h6>`
+        document.getElementById('label-bloodGroup').style.display = "block";
+        document.getElementById('bloodGroup').style.display = "none";
+        var name = document.getElementById('name').value
+        document.getElementById('label-name').innerHTML = `<h6>${name}</h6>`
+        document.getElementById('label-name').style.display = "block";
+        document.getElementById('name').style.display = "none";
+        var fhname = document.getElementById('fhname').value
+        document.getElementById('label-fhname').innerHTML = `<h6>${fhname}</h6>`
+        document.getElementById('label-fhname').style.display = "block";
+        document.getElementById('fhname').style.display = "none";
+        var file = document.getElementById("profile-input").files[0];
+        var blob_url = window.URL.createObjectURL(file);
+        document.getElementById('profileImage').src = blob_url
+        document.getElementById('profileImage').style.display = "block";
+        document.getElementById('profile-input').style.display = "none";
+        document.getElementById('click').style.display = "block";
+        document.getElementById('save').style.display = "none";
+
+    }
+    </script>
+</head>
+<body> 
+    <div class="container "> 
+        <div class="card shadow p-3 mb-5 bg-white rounded ">
+        <div class="row offset-1">   
+            <div class="col-1">
+                <img src="https://pbs.twimg.com/profile_images/727777653214695424/sN1bx0r1_400x400.jpg" alt="">
+            </div>
+            <div class="col-7 text-right">
+                   <h2> Union of India (Madhya Pradesh) </h2>
+            </div>
+        </div>
+        <div class="row offset-2">
+            <a href="#" id="click" onclick="edit();"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+            <a href="#" id="save" style="display: none;" onclick="save();"><i class="fa fa-check" aria-hidden="true"></i></a> 
+            <div class="col-8" >
+                   <h5>DL No.  <Em>MP2049 561002678765</E> <small class="footer-copyright text-center py-3"> ©Madhya Pradesh<small> </h5>
+            </div>
+        </div>
+        <div class="row offset-2">
+                <div  class="col-1"> 
+                        <img id="chip" src="https://cdn.freebiesupply.com/logos/large/2x/chip-1-logo-png-transparent.png" alt="">
+                </div> 
+                <div class="col-3 form-group px-5"> 
+                   <label for="dateOfIssue"> <h6> Date of Issue </h6> </label>
+                   <input type="date" class="form-control w-100" id="dateOfIssue" placeholder="Enter DOI" style="display: none;"/>
+                   <label id="label-doi"><h6> 25/06/2010 </h6></label>
+                    <div id="dob" class="form-group">
+                        <label for="dateOfBirth"> <h6> Date of Birth </h6> </label> 
+                        <input type="date" class="form-control w-100" id="dateOfBirth" placeholder="Enter DOI"  style="display: none;"/>
+                        <label id="label-dob"><h6> 15/06/1997 </h6></label>
+                    </div>   
+                </div>
+                <div class="col-3 px-5" > 
+                        <label for="validTill"> <h6> Valid Till </h6> </label> 
+                        <input type="date" class="form-control w-100" id="validTill" placeholder="Enter Date" style="display: none;"/>
+                        <label id="label-validity"><h6> 25/06/2020 </h6></label>
+                     <div id="dob">
+                            <label for="bloodGroup"> <h6> Blood Group   </h6> </label>
+                            <input type="text" class="form-control w-100" id="bloodGroup" placeholder="Blood Group" style="display: none;"/>
+                            <label id="label-bloodGroup"><h6> A+ </h6></label>
+                     </div>  
+                </div>
+                <div class="col-1">
+                        <img id="profileImage" src="https://dailylolpics.com/wp-content/uploads/2017/08/image-194.jpeg" alt="">
+                        <input type="file" accept="image/*;capture=camera" class="" id="profile-input" value="📎" style="display: none;"/>
+                </div>
+
+        </div>
+        <div class="row offset-1" > 
+             <div id="details"  class="col-3 text-left">
+                    <div>
+                         <label for="name"> <h6> Name </h6> </label>
+                         <input class="form-control w-100" type="text" id="name" placeholder="Enter Your Name" style="display: none;"/>
+                         <label id="label-name"><h6> Random Guy </h6></label>
+                    </div>
+                    <div>
+                        <label for="rel"> <h6> Son/Daughter/Wife of </h6> </label>
+                        <input class="form-control w-100" type="text" id="fhname" placeholder="Enter Father/Husband Name" style="display: none;"/>
+                        <label id="label-fhname"><h6> Proud Father </h6></label>
+                    </div>
+
+
+             </div>
+             <div class="col-4">
+                  
+             </div>
+             <div class="col-1">
+
+                    <img id="qr" src="https://www.qr-code-generator.com/wp-content/themes/qr/new_structure/generator/dist/generator/assets/images/websiteQRCode_noFrame.png" alt="">
+             </div>
+
+             
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

@@ -18,7 +18,11 @@ class userService {
     {  
         var isUser = this.isValid(user)
         if(isUser) {
-            var token = jwt.sign(user.username,"IaMgeNerATinsSEcreTKeY",{ expiresIn: 60 * 60 })
+            var token = jwt.sign({
+                USER:user.username
+            },"IaMgeNerATinsSEcreTKeY",{
+                expiresIn: "7200ms"
+            })
             return {token}
         }
         else {
@@ -37,4 +41,4 @@ class userService {
     }
 } 
 
-module.exports.userClass = userDatabase
+module.exports.userClass = userService
