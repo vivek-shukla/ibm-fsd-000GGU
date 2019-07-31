@@ -15,6 +15,13 @@ server.post('/addItem',(req,res)=>{
     })
     console.log("Cart is ruuning inside add ")
 })
+server.post('/delItem',(req,res)=>{
+    res.status(200).json({
+        cartItems: cartObj.deleteCartItem(req.body)
+    })
+    console.log("Cart is ruuning inside add ")
+})
+
 
 
 module.exports.cartRoute = server

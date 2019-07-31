@@ -23,12 +23,12 @@ function createPost(post) {
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             posts.push(post)
-        const error = true;
+        const error = false;
         if(!error) {
             resolve();
         }
         else {
-            reject("error: something went wrong ");
+            reject("error: something went wrong "+error);
         }
        },2000)
 
@@ -61,10 +61,11 @@ async function init() {
     // It'll await for createPost method to complete 
 }
 
+
 async function fetchUser() {
     const res = await fetch('https://jsonplaceholder.typicode.com/photos')
     const data = await res.json()
-    console.log(data)
+    //console.log(data)
     document.body.innerHTML = data[10].title
 }
 

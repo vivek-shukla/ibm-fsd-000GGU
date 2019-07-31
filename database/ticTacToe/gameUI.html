@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body > 
+    <div> 
+
+       <input id="start-btn" type="button" class="btn btn-success" value="Start Tic Tac Toe Game " onclick="startGame()" />
+    </div>
+    <div id="gameStart" class="container" style="display: none">
+        <table class="table table-borderless">
+            <tr>
+                <td class="w-25">
+                   <input type="button" class="btn btn-secondary " value="" id="00" onclick="endgame('00')" />
+                </td>
+                <td class="w-25">
+                  <input type="button" value="" class="btn btn-secondary " id="01" onclick="endgame('01')" />
+                </td>
+                <td class="w-25">
+                  <input type="button" value="" class="btn btn-secondary" id="02" onclick="endgame('02')" />
+                </td>
+            </tr>
+            <tr>
+                    <td class="w-25">
+                       <input type="button" class="btn btn-secondary" value="" id="10" onclick="endgame('10')" />
+                    </td>
+                    <td class="w-25">
+                      <input type="button" class="btn btn-secondary" value="" id="11" onclick="endgame('11')" />
+                    </td>
+                    <td class="w-25">
+                      <input type="button" class="btn btn-secondary" value="" id="12" onclick="endgame('12')" />
+                    </td>
+            </tr>
+            <tr>
+                    <td class="w-25">
+                       <input type="button" class="btn btn-secondary" value="" id="20" onclick="endgame('20')" />
+                    </td>
+                    <td class="w-25">
+                      <input type="button" class="btn btn-secondary" value="" id="21" onclick="endgame('21')" />
+                    </td>
+                    <td class="w-25">
+                      <input type="button" class="btn btn-secondary" value="" id="22" onclick="endgame('22')" />
+                    </td>
+            </tr>
+        </table> 
+        <input type="button" class="btn btn-secondary" value="Player 1" id="player1" onclick="switchPlayer(1)" >
+        <input type="button" class="btn btn-secondary" value="Player 2"id="player2" onclick="switchPlayer(2)">
+        <input type="button" class="btn btn-success" value="Pause Game"id="pauseGame" onclick="saveAndLock()">
+        <input type="button" class="btn btn-success" value="Resume Game"id="Resume" onclick="resumeGame()">
+        <h6 id="winner"></h6>
+
+    </div>
+    
+</body>
+<script>
+    let playerToggle = [0,0]
+    let counter = 0
+    function startGame()
+    {
+         document.getElementById('gameStart').style.display= "block";
+         document.getElementById('start-btn').style.display= "none";
+    }
+    function switchPlayer(p)
+    {
+        playerToggle[p-1]=1
+        alert(`player ${p} It's your turn`)
+        document.getElementById(`player${p}`).className = "btn btn-success"
+        
+    }
+    function saveAndLock()
+    {   const collectionMatrix = document.getElementsByTagName("input")
+        for(let i=1;i<13;i++) 
+       {
+           collectionMatrix[i].disabled = true
+        }
+        
+    }
+    let temp = []
+    function exitCriteria(btn,p) 
+    {  
+        for(let i=0;i<3;i++)
+        {
+            for(let j=0;j<3;j++) 
+            {
+                if(`${i}${j}`==btn)
+                {
+                    // check for horizontal win 
+                    if(document.getElementById(`${i}${j}`).value==document.getElementById(`${i}${(j+1)%3}`).value && document.getElementById(`${i}${(j+1)%3}`).value == document.getElementById(`${i}${(j+2)%3}`).value && document.getElementById(`${i}${j}`).value==document.getElementById(`${i}${(j+2)%3}`).value  )
+                    {  
+                        document.getElementById('winner').innerText = `Player${p}, You've Won the game horizontally `
+                        console.log("Won the game horizontally")
+                        return true
+                    }
+                    if(document.getElementById(`${i}${j}`).value==document.getElementById(`${(i+1)%3}${j}`).value && document.getElementById(`${(i+1)%3}${j}`).value == document.getElementById(`${(i+2)%3}${j}`).value && document.getElementById(`${i}${j}`).value==document.getElementById(`${(i+2)%2}${j}`).value  )
+                    { 
+                        document.getElementById('winner').innerText = `Player${p}, You've Won the game Vertically  `
+                        console.log("Won the game ")
+                        return true
+                    }
+                    if(i==j)
+                    {
+                        if(document.getElementById(`${i}${j}`).value==document.getElementById(`${(i+1)%3}${(j+1)%3}`).value && document.getElementById(`${(i+1)%3}${(j+1)%3}`).value == document.getElementById(`${(i+2)%3}${(j+2)%3}`).value && document.getElementById(`${i}${j}`).value==document.getElementById(`${(i+2)%3}${(j+2)%3}`).value  )
+                      {  
+                        document.getElementById('winner').innerText = `Player${p}, You've Won the game Diagonally  `
+                        console.log("Won the game  positive Diagonally")
+                        return true
+                     }
+                    }
+                    if(i+j==2)
+                    {   
+                        temp.push(document.getElementById(`${i}${j}`).value)
+                        if(temp.length==3)
+                        {  if(temp[0]==temp[1] && temp[1]==temp[2] && temp[0]==temp[2]) {
+                            document.getElementById('winner').innerText = `Player${p}, You've Won the game inverse diagonally  `
+                            console.log("won the game inverse diagonally")
+                        }
+                        }
+                    }
+
+                }
+            }
+        }
+        return false
+    }
+    function endgame(btn)  
+    {    counter++
+        if(playerToggle[0]==1) 
+        {   console.log("inside if")
+            document.getElementById(btn).value='X'
+            document.getElementById(btn).disabled = true
+            document.getElementById(btn).className = "btn btn-primary"
+            document.getElementById('player2').className = "btn btn-success"
+            document.getElementById('player1').className = "btn btn-secondary"
+            // exitCriteria(btn,1) 
+            playerToggle[1]=1
+            playerToggle[0]=0
+            saveState(2)
+            if(exitCriteria(btn,1)) 
+            {   
+                return true
+            }   
+            // playerToggle[0]=0
+        }
+        else
+        {   console.log("inside else")
+            document.getElementById(btn).value='O'
+            document.getElementById(btn).className = "btn btn-info"
+            document.getElementById(btn).disabled = true
+            document.getElementById('player1').className = "btn btn-success"
+            document.getElementById('player2').className = "btn btn-secondary"
+            // playerToggle[1]=0
+            saveState(1)
+            if(exitCriteria(btn,2)) 
+            {   
+                // document.getElementById(btn).disabled = true
+                return true
+            }
+            // exitCriteria(btn,2) 
+            playerToggle[1]=0
+            playerToggle[0]=1
+        }
+        if(counter==9)
+         {
+            document.getElementById('winner').innerText = ` Game Draw  `
+         } 
+
+         
+        // exitCriteria(btn) 
+        
+    }
+    function saveState(p)
+         {
+             fetch('http://localhost:1140/game/save',{
+                 method: 'POST',
+                 headers:{
+                     'content-type':'application/json'
+                 },
+                 body: JSON.stringify( {
+                          "_id":1,
+                        "gridState": {
+                            "00": document.getElementById('00').value,
+                            "01":document.getElementById('01').value,
+                            "02":document.getElementById('02').value,
+                            "10": document.getElementById('10').value,
+                            "11":document.getElementById('11').value,
+                            "12":document.getElementById('12').value,
+                            "20": document.getElementById('20').value,
+                            "21":document.getElementById('21').value,
+                            "22":document.getElementById('22').value
+                       },
+                        "playerTurn": p
+                        
+                  })
+             })
+             .then(res=>res.json())
+             .then(data=>{
+                 console.log(data)
+             })
+
+         } 
+         function resumeGame()
+         {
+             fetch('http://localhost:1140/game')
+             .then(res=>res.json())
+             .then(data=>{
+                console.log("message",data.State)
+                let keys = Object.keys(data.State[0].gridState)
+                keys.forEach(key=>{
+                    document.getElementById(key).value = data.State[0].gridState[key]
+                })
+                const collectionMatrix = document.getElementsByTagName("input")
+                for(let i=1;i<13;i++) 
+                    {  
+                        //    collectionMatrix[i].disabled = false
+                         if(collectionMatrix[i].value=="") 
+                         {
+                            collectionMatrix[i].disabled = false
+                         }
+                         else
+                         {
+                            collectionMatrix[i].disabled = true
+                         }
+                    }
+                alert(`player${data.State[0].playerTurn} , it's your turn` )
+             })
+         }
+</script>
+
+
+</html>

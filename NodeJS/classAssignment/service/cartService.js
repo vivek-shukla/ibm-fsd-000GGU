@@ -35,6 +35,17 @@ class Cart {
              i++ 
          })
      }
+     deleteCartItem(itm) {
+         var i = 0
+         this.cart.forEach(item=>{
+            if(item.name==itm.name)
+            {
+                this.cart.splice(i,1)
+            }   
+            i++  
+         }) 
+         return this.cart
+     }
 } 
 
 module.exports.cartClass = Cart
