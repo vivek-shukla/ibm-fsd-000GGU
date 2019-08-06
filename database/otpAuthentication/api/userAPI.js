@@ -35,44 +35,42 @@ server.post('/createPassword',(req,res)=>{
         }
         else { 
             const d = new Date()
-            if(responseCreate[0].validity < d.getTime()) 
-            {  
-                res.status(200).json({
-                    message: "Otp timeout"
-                })
-                // userObj.removeUser(responseCreate[0].otp,(errorRemove,responseRemove)=>{
-                //     if(errorRemove)
-                //     {
-                //         res.status(200).json({
-                //             message: "could't remove existing otp"
-                //         })
-                //     }
-                //     else
-                //     {
-                //         res.status(200).json({
-                //             message: "Removed existing otp"
-                //         })
-                //     }
-                // })
-            }
-            else
-            {   userObj.saveUser(req.body,(err0rSave,responseSave)=>{
-                     if(err0rSave)
-                     {
-                         res.status(200).json({
-                             message: "Can't save details"
-                         })
-                     }
-                     else {
+             if(responseCreate.length>0)
+             {
+                if(responseCreate[0].validity < d.getTime()) 
+                   {   
+                    userObj.removeUser(responseCreate[0].otp,(errorRemove,responseRemove)=>{
+                        if(errorRemove)
+                        {
+                            res.status(200).json({
+                                message: "could't remove existing otp"
+                            })
+                        }
+                        else
+                        {
+                            res.status(200).json({
+                                message: "Otp timeout"
+                            })
+                        }
+                    })
+                    //  res.status(200).json({
+                    // message: "Otp timeout"
+                  }
+                userObj.saveUser(req.body,(err0rSave,responseSave)=>{
+                        if(err0rSave)
+                        {
+                            res.status(200).json({
+                                message: "Can't save details"
+                            })
+                        }
+                        else {
                         res.status(200).json({
                             message: "Otp validated"
                         })
-                     }
+                        }
                         
-                })
-
-            }
-             
+                })   
+             }    
         }
     })
 })

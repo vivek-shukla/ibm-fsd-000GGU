@@ -8,7 +8,7 @@ class userClass {
         this.name = name;
         this.email = email;
         this.otp = otpGenerator.generate(6, { upperCase: false, specialChars: false, digits: true });
-        this.validity = d.getTime()+600000;
+        this.validity = d.getTime()+300000;
         this.userObj = {
             name: this.name,
             email:this.email,
@@ -29,8 +29,8 @@ class userClass {
             subject: 'Successful First Time Login',
             body: `<div> Hello ${user.name}</div>
                    <p>You've login at our website </p>
-                   <div> Enter this otp to generate password <h4> ${user.otp} </h4> </div>
-                   <div> Note: It is valid for 15 minutes </div>`
+                   <div> Enter this otp to generate password <h3> ${user.otp} </h3> </div>
+                   <div> <h5> Note: It is valid for 5 minutes </h5> </div>`
         }
     eObj.email(emailObj)
     }
@@ -52,14 +52,14 @@ class userClass {
         })
 
     } 
-//     removeUser(passotp,callback) 
-//     {
-//         mongoClient.connect('mongodb://localhost:27017',(err,connectionObj)=>{
-//             connectionObj.db('otpDatabase').collection('user').deleteOne({otp: passotp},(error,response)=>{
-//                 callback(error,response)
-//             })
-//     })
-//   }
+    removeUser(passotp,callback) 
+    {
+        mongoClient.connect('mongodb://localhost:27017',(err,connectionObj)=>{
+            connectionObj.db('otpDatabase').collection('user').deleteOne({otp: passotp},(error,response)=>{
+                callback(error,response)
+            })
+    })
+  }
 
 
 }
