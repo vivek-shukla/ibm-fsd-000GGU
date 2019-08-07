@@ -6,9 +6,9 @@ const d = new Date()
 class userClass {
     getCredentialandMail(name,email,callback) {
         this.name = name;
-        this.email = email;
+        this.email = email; 
         this.otp = otpGenerator.generate(6, { upperCase: false, specialChars: false, digits: true });
-        this.validity = d.getTime()+300000;
+        this.validity = d.getTime()+300000; 
         this.userObj = {
             name: this.name,
             email:this.email,
@@ -17,7 +17,7 @@ class userClass {
         }
         this.sendMailToUser(this.userObj) 
         mongoClient.connect('mongodb://localhost:27017',(err,connectionObj)=>{
-            connectionObj.db('otpDatabase').collection('user').insert(this.userObj,(error,response)=>{
+            connectionObj.db('otpDatabase').collection('user').update({email:this.email},{$set:this.userObj},{upsert:true},(error,response)=>{ 
                 callback(error,response)
             })
         })
@@ -30,7 +30,8 @@ class userClass {
             body: `<div> Hello ${user.name}</div>
                    <p>You've login at our website </p>
                    <div> Enter this otp to generate password <h3> ${user.otp} </h3> </div>
-                   <div> <h5> Note: It is valid for 5 minutes </h5> </div>`
+                   <div> <h5> Note: It is valid for 5 minutes </h5> </div>
+                   <a href='http://localhost:4404/otp?otp=${this.otp}&email=${this.email}'>Click This Page</a>`
         }
     eObj.email(emailObj)
     }
@@ -42,15 +43,22 @@ class userClass {
             })
         })
     }
+    verifyUser(userCredential,callback)
+    {
+        mongoClient.connect('mongodb://localhost:27017',(err,connectionObj)=>{
+            connectionObj.db('otpDatabase').collection('user').find({otp: userCredential.otp,email:userCredential.email}).toArray((error,response)=>{
+                callback(error,response)
+            })
+        })
+    }
 
     saveUser(passCredential,callback) 
     {  
         mongoClient.connect('mongodb://localhost:27017',(err,connectionObj)=>{
-            connectionObj.db('otpDatabase').collection('user').update({otp: passCredential.otp},{$set:{password:passCredential.password}},(error,response)=>{
+            connectionObj.db('otpDatabase').collection('user').update({otp: passCredential.otp},{$set:{password:passCredential.password,otp:null,validity:null}},(error,response)=>{
                 callback(error,response)
             })
         })
-
     } 
     removeUser(passotp,callback) 
     {

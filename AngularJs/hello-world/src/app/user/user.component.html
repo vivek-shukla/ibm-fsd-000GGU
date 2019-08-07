@@ -1,0 +1,11 @@
+<p>user works!</p>
+<b>{{message}}</b>
+<div *ngFor="let tr of tableDetail ">
+    <tr>
+        <td *ngFor="let td of tr">
+            {{td}}
+        </td>
+    </tr>
+</div>
+<div *ngIf="0;else no "> 123 <h4> Inside If</h4> </div>
+<img src={{imageUrl}} alt="No Images" srcset="" />

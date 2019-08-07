@@ -12,7 +12,9 @@ server.get('/',(req,res)=>{
     })
 })
 server.use('/user',userRoute)
-
+server.get("/otp",(rq,rs)=>{
+    rs.sendFile(__dirname +"/otpPage.html");
+})
 server.listen(4404,()=>{
     console.log("sever is running at 4404")
 })

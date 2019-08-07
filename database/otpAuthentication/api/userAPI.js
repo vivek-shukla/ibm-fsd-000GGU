@@ -19,6 +19,54 @@ server.post('/',(req,res)=>{
      
 })
 
+server.post('/verifyAPI',(req,res)=>{
+    userObj.verifyUser(req.body,(errorVerify,responseVerify)=>{
+        if(errorVerify)
+        {
+            res.status(200).json({
+                message: "Error in verification of otp"
+            })
+        }
+        else
+        {
+            if(responseVerify.length>0)
+            {
+                if(responseVerify[0].password!=null && responseVerify[0].password!=undefined ) 
+                {
+                    res.status(200).json({
+                        message: "User Already Exist"
+                    })
+                }
+                else
+                {  
+                    const d = new Date()
+                    if(responseVerify[0].validity < d.getTime()) 
+                   {   
+                            res.status(200).json({
+                                message: "Otp timeout"
+                            })
+                        }
+                    //  res.status(200).json({
+                    // message: "Otp timeout"
+                   else 
+                   {  
+                       res.status(200).json({
+                           message: "show password",
+                           email:req.body.email
+                       })
+                   }
+
+                }
+            }
+            else
+            {
+                res.status(200).json({
+                    message:"Invalid Credential"
+                })
+            }
+        }
+    })
+})
 server.post('/createPassword',(req,res)=>{
     userObj.createPassword(req.body,(errorCreate,responseCreate)=>{
         if(req.body.password != req.body.confirmPassword)
@@ -39,24 +87,16 @@ server.post('/createPassword',(req,res)=>{
              {
                 if(responseCreate[0].validity < d.getTime()) 
                    {   
-                    userObj.removeUser(responseCreate[0].otp,(errorRemove,responseRemove)=>{
-                        if(errorRemove)
-                        {
-                            res.status(200).json({
-                                message: "could't remove existing otp"
-                            })
-                        }
-                        else
-                        {
                             res.status(200).json({
                                 message: "Otp timeout"
                             })
                         }
-                    })
                     //  res.status(200).json({
                     // message: "Otp timeout"
-                  }
-                userObj.saveUser(req.body,(err0rSave,responseSave)=>{
+                   else 
+                   {
+
+                    userObj.saveUser(req.body,(err0rSave,responseSave)=>{
                         if(err0rSave)
                         {
                             res.status(200).json({
@@ -69,9 +109,15 @@ server.post('/createPassword',(req,res)=>{
                         })
                         }
                         
-                })   
-             }    
-        }
+                }) 
+               } 
+            } 
+            else {
+                res.status(200).json({
+                    message: "User Can't find"
+                })
+            } 
+             }
     })
 })
 

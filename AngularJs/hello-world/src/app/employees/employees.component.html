@@ -1,0 +1,20 @@
+<p>employees works!</p> 
+<h1>{{msgToEmployee}}</h1>
+
+<table>
+    <tr>
+        <th> Id </th>
+        <th> Name </th>
+        <th> Status </th>
+        <th> <input type="button" (click)="add()" value="Add"> </th>
+    </tr>
+    <tr *ngFor = "let emp of empArray">
+        <td>{{emp.eid}}</td>
+        <td>{{emp.name}}</td> 
+        <td>{{emp.status}}</td>
+        <td><input type="button" (click)="delete(emp.eid)" value="delete"></td>
+    </tr>
+</table> 
+
+<input type="button" (click)="clickMe()" value="Exported Emp">
+
