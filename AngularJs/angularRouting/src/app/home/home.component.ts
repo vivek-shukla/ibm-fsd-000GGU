@@ -19,9 +19,13 @@ export class HomeComponent implements OnInit {
      {
       this.router.navigate(['user','10'])
      } 
-     else
+     else if(routeTo=='aboutus')
      {
       this.router.navigate(['aboutus'])
+     }
+     else
+     {
+       this.router.navigate(['/query'],{ queryParams: {id:7 , name:'ibm' }})
      }
   }
 }

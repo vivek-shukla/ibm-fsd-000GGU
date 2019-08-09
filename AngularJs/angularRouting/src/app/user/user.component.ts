@@ -7,6 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  userObj:object = { 
+    id:1,
+    name:'vivek'
+  } 
+   paersedUser = JSON.stringify(this.userObj)
   idFromParam:any
   constructor(private route: ActivatedRoute) { }
 

@@ -1,0 +1,30 @@
+<p>update works!</p> 
+
+
+<fieldset>
+
+        <legend>Update User</legend>    
+    
+        <form #user="ngForm" (submit)="editUser()">
+    
+            <input type="text" placeholder="Name" name="name" [(ngModel)]="toUpdate.name" /> <br/>
+    
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="toUpdate.email"  readonly/> <br/>
+            
+            <input type="password" placeholder="password" name="password" [(ngModel)]="toUpdate.password" /> <br/>
+
+            <input type="submit" value="Update User" />
+    
+        </form>
+    
+ </fieldset>  
+
+ <!-- <fieldset>
+     <form #formRfs ="ngForm"  (ngSumbit)="submit()" novalidate >
+         <input type="email" name="email" required #em="ngModel" \>
+
+         <button>Submit</button>
+     </form>
+ </fieldset>
+
+ <h4>  Email: {{em.value}}  &nbsp; form Value: {{formRfs.value}} </h4> --> 

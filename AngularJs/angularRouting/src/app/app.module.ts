@@ -7,6 +7,11 @@ import { UserComponent } from './user/user.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PowerPipe } from './power.pipe';
+import { QueryparamComponent } from './queryparam/queryparam.component';
+import { ProjectModule } from './project/project.module';
+import { DummyComponent } from './dummy/dummy.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -14,11 +19,16 @@ import { NavigationComponent } from './navigation/navigation.component';
     UserComponent,
     AboutusComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    PowerPipe,
+    QueryparamComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProjectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
