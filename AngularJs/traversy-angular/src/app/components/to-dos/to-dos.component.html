@@ -1,0 +1,7 @@
+<p>to-dos works!</p> 
+<app-todo-item *ngFor="let todos of toDo" [todo]="todos">  
+        {{
+            todos.title
+        }}
+ <!-- binding todos from todos component to todo in app componenet  -->
+</app-todo-item>
