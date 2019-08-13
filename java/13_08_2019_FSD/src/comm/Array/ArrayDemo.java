@@ -1,4 +1,5 @@
 package comm.Array;
+import java.util.Arrays;
 
 public class ArrayDemo { 
 	private static char array[];
@@ -18,5 +19,12 @@ public class ArrayDemo {
 		
 		return array;
 	}
+	public static int searchElement(char key)
+	{
+		Arrays.sort(array);
+		return Arrays.binarySearch(array,key);
+		
+	}
+	
 
 }
