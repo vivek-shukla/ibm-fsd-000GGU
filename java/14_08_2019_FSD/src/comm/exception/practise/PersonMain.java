@@ -5,9 +5,10 @@ public class PersonMain {
 	public static void main(String[] args) {
 	 String firstName,lastName,choice;
 	 Scanner scanner = new Scanner(System.in);
+	 System.out.println("********* CREATE FIRST OBJECT *************");
 	 System.out.println("Enter First Name: ");
 	 firstName = scanner.next();
-	 System.out.println("Enter First Name: ");
+	 System.out.println("Enter Last Name: ");
 	 lastName = scanner.next();
 	 try {
 		Person prevPerson = new Person(firstName,lastName);
@@ -24,7 +25,6 @@ public class PersonMain {
 				try 
 				{   
 					Person currPerson = new Person(firstName,lastName);
-					System.out.println(currPerson+" "+prevPerson);
 					boolean isExist = prevPerson.isEqual(currPerson);
 					 if(!isExist)
 					 {
@@ -38,11 +38,17 @@ public class PersonMain {
 				}
 				 
 			 }
+			 else if(choice.equals("N"))
+			 {
+				 System.out.println("****Exit Program*****");
+				 System.exit(1);
+				 break;
+			 }
 			 else {
 				System.out.println("Enter a valid choice"); 
 			 }	   
 			}
-		 while(choice !="N");
+		 while(!(choice.equals("N")));
 			
 			 
 		 }
