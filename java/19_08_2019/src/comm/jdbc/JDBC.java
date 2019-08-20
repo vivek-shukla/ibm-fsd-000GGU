@@ -30,6 +30,10 @@ public class JDBC {
 		{
 			System.out.printf("%d\t %s \n",resultSet.getInt(1),resultSet.getString(2));
 		}
+		System.out.println("Enter department id to update:");
+		int idToUpdate = scanner.nextInt();
+		pst=connection.prepareStatement(" values(?,?)");
+		
 		
 		
 	}
