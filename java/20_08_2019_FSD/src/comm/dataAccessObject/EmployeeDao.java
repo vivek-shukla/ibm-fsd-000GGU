@@ -47,11 +47,14 @@ public class EmployeeDao implements employeeDaoInterface {
 	public List<EmployeeModel> viewAllEmployee() {
 		List<EmployeeModel> empList = new ArrayList<EmployeeModel>();
 		try {
-			resultSet = pStatement.executeQuery(" select * from EmployeeJdbc ");
+			pStatement = connectionObj.prepareStatement(" select * from EmployeeJdbc "); // prepare p statement first
+			//statement = connectionObj.createStatement();
+			resultSet = pStatement.executeQuery();
 			while(resultSet.next())
 			{
 				empList.add(new EmployeeModel( resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4) ));
 			}
+			return empList;
 			
 		} catch (SQLException e) { 
 			System.err.println("Couldn't find element");

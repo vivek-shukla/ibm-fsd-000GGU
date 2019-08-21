@@ -36,8 +36,8 @@ public class EmployeeMain {
 						employeeServiceObj.inserstEmployee(new EmployeeModel(id,fName,lName,email) );
 						break;
 					case 2: 
-						List<EmployeeModel> empList = new ArrayList<EmployeeModel>();
-						empList= employeeServiceObj.viewAllEmployee();
+						List<EmployeeModel> empList = null;
+						empList = employeeServiceObj.viewAllEmployee();
 						System.out.println("Id\t Name \t email");
 						for(EmployeeModel emp: empList)
 						{
