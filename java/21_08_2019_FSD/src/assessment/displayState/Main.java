@@ -44,11 +44,5 @@ public class Main {
 				System.out.println(states.getName());
 			}
 		}
-		
-		
-		
-		
-
 	}
-
 }
