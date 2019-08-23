@@ -34,5 +34,10 @@ public class EmployeeServiceClass implements EmployeeServiceInterface {
 	{
 		daoObject.updateEmployee(id, fName, lName, email);
 	}
+	
+	public String findEmployee(int id) {
+		// TODO Auto-generated method stub 
+		return daoObject.findEmployee(id);
 
+	}
 }

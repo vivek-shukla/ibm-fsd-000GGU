@@ -96,7 +96,7 @@ public class TextInput extends JFrame {
 					while((s=inputStream.readLine())!=null)
 					{	str = str+s+"\n";
 //				    	textArea.append(s+'\n');
-					  System.out.println(s);
+					   System.out.println(s);
 					}
 					
 					textArea.setText(str);

@@ -94,5 +94,25 @@ public class EmployeeDao implements employeeDaoInterface {
 			e.printStackTrace();
 		}
 	}
+	
+	public String findEmployee(int id) { 
+		try {
+			pStatement = connectionObj.prepareStatement("select * from EmployeeJdbc where id = (?)");
+			pStatement.setInt(1,id);
+			resultSet = pStatement.executeQuery();
+			//System.err.println(resultSet.getInt(1)+" "+resultSet.getString(2)+" "+resultSet.getString(3)+" "+resultSet.getString(4));
+			if(resultSet.next())
+			{
+			  return resultSet.getInt(1)+" "+resultSet.getString(2)+" "+resultSet.getString(3)+" "+resultSet.getString(4);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+		// TODO Auto-generated method stub
+	}
 
 }

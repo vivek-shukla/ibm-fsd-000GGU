@@ -11,4 +11,5 @@ public interface employeeDaoInterface {
 	public List<EmployeeModel> viewAllEmployee();
 	public void deleteEmployee(int id);
 	public void updateEmployee(int id,String fName,String lName,String email);
+	public String findEmployee(int id);
 }
