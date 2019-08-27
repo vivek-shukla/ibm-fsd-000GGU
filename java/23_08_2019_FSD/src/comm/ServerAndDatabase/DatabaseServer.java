@@ -39,15 +39,14 @@ public class DatabaseServer {
 			String l = str;
 	        while(t)
 	        {
-	        	
-
-//						while(str!=null)
-//						{   
-        					
+						
 							String arrayEmp[] = l.split(Pattern.quote(" "));
 							if(arrayEmp.length<3)
 							{
 								System.out.println(empService.findEmployee(Integer.parseInt(arrayEmp[0])));
+								server.close();
+								client.close();	
+								
 							}
 							else
 							{
@@ -58,16 +57,13 @@ public class DatabaseServer {
 								empService.inserstEmployee(new EmployeeModel(Integer.parseInt(id),fName,lName,email));
 								System.out.println("The Object Inserted \n "+ l );
 							}
-							
-//							str = reader.readLine();
-//							
-//								
-//						}
+			
 //						if(str.equals("bye"))
 //						{
 //							server.close();
 //							client.close();	
 //						}
+						str = reader.readLine();
 	}
 
 	}
