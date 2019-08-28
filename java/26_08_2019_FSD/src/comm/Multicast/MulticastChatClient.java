@@ -74,7 +74,7 @@ public class MulticastChatClient extends JFrame {
 		MulticastSocket chatMulticastSocket;
 		chatMulticastSocket = new MulticastSocket(4444);
 		InetAddress group =
-                InetAddress.getByName("228.0.0.1");
+                InetAddress.getByName("225.0.0.2");
         chatMulticastSocket.joinGroup(group);
 		JButton btnSendMessage = new JButton("Send Message");
 		btnSendMessage.addActionListener(new ActionListener() {
@@ -89,7 +89,7 @@ public class MulticastChatClient extends JFrame {
 			        // Send the message to Multicast address
 			        DatagramPacket data = new
 			                DatagramPacket(msg.getBytes(), 0,
-			                msg.length(), group, 4444);
+			                msg.length(), group, 1236);
 			        
 			        try {
 			        	chatMulticastSocket.send(data);

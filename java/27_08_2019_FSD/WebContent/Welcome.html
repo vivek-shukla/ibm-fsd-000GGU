@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+  <form action="addLeague.do"> 
+    <label for="title">league Title </label>
+    <input type="text" name = "title" id="title" placeholder="Enter League title">
+    <label for="year">Enter Year </label>
+    <input type="text" name = "year" id="year" placeholder="Enter year">
+    <select name="sport">
+       <option value="Unknown">Select...</option>
+       <option value="Cricket">Cricket</option>
+       <option value="Football">Football</option>
+       <option value="Soccer">Soccer</option>  
+    </select>
+    <input type="Submit" value="Submit"> 
+  </form>
+  <form action="viewLeague.do">
+     <input type="submit" name="viewLeague" value="View League"/>
+  </form>
+</body>
+</html>

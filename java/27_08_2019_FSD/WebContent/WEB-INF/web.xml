@@ -2,9 +2,9 @@
 <web-app id="WebApp_ID" version="3.1"
  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
- <display-name>27_08_2019_FSD_Servlet</display-name>
+ <display-name>27_08_2019_FSD</display-name>
  <welcome-file-list>
-  <welcome-file>/EmployeeMain.html</welcome-file>
+  <welcome-file>/Welcome.html</welcome-file>
  </welcome-file-list>
  <resource-ref>
  <description>MySQL Datasource example</description>
@@ -13,3 +13,4 @@
  <res-auth>Container</res-auth>
  </resource-ref>
 </web-app>
+
