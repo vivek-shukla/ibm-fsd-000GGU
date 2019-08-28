@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="26_08_2019_ServletDemo" path="/26_08_2019_ServletDemo" reloadable="true" source="org.eclipse.jst.jee.server:26_08_2019_ServletDemo"/><Context docBase="Servlet_Demo" path="/Servlet_Demo" reloadable="true" source="org.eclipse.jst.jee.server:Servlet_Demo"/><Context docBase="27_08_2019_FSD_Servlet" path="/27_08_2019_FSD_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:27_08_2019_FSD_Servlet"/><Context docBase="27_08_2019_FSD" path="/27_08_2019_FSD" reloadable="true" source="org.eclipse.jst.jee.server:27_08_2019_FSD"/></Host>
+      <Context docBase="26_08_2019_ServletDemo" path="/26_08_2019_ServletDemo" reloadable="true" source="org.eclipse.jst.jee.server:26_08_2019_ServletDemo"/><Context docBase="Servlet_Demo" path="/Servlet_Demo" reloadable="true" source="org.eclipse.jst.jee.server:Servlet_Demo"/><Context docBase="27_08_2019_FSD_Servlet" path="/27_08_2019_FSD_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:27_08_2019_FSD_Servlet"/><Context docBase="27_08_2019_FSD" path="/27_08_2019_FSD" reloadable="true" source="org.eclipse.jst.jee.server:27_08_2019_FSD"/><Context docBase="28_08_2019_FSD" path="/28_08_2019_FSD" reloadable="true" source="org.eclipse.jst.jee.server:28_08_2019_FSD"/></Host>
     </Engine>
   </Service>
 </Server>
