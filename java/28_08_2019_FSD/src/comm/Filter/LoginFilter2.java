@@ -8,6 +8,7 @@ import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -52,11 +53,19 @@ public class LoginFilter2 implements Filter {
        try {
 		if(employeeServiceObj.matchPassword(request.getParameter("email"), request.getParameter("password")))
 			// pass the request along the filter chain
-			chain.doFilter(request, response);
+		{	 request.setAttribute("em", "verified");
+		     request.setAttribute("pass", "verified");
+		     RequestDispatcher  view=request.getRequestDispatcher("Login.jsp");
+			 view.forward(request, response);
+		}
+			
 		else
-		{
-			PrintWriter writer = response.getWriter();
-			writer.println("Password not match");
+		{   request.setAttribute("em", "verified");
+			request.setAttribute("pass", "invalid");
+			RequestDispatcher  view=request.getRequestDispatcher("Login.jsp");
+			view.forward(request, response);
+//			PrintWriter writer = response.getWriter();
+//			writer.println("Password not match");
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block

@@ -24,7 +24,7 @@ import comm.league.model.LeagueModel;
  */
 @WebServlet("/addLeague.do")
 public class AddLeague extends HttpServlet {
-	private static int serialVersionUID = 5;
+	private static int serialVersionUID = 91;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -90,13 +90,13 @@ public class AddLeague extends HttpServlet {
 			pst.setInt(4,serialVersionUID++ );
 			pst.executeUpdate();
 			request.setAttribute("SUCCESS", new LeagueModel(year,title,sport));
-			RequestDispatcher  view=request.getRequestDispatcher("success.view");
+			RequestDispatcher  view=request.getRequestDispatcher("Success.jsp");
 			view.forward(request, response);
 		}
 		else
 		{  
 			request.setAttribute("Error", errorList);
-			RequestDispatcher  view=request.getRequestDispatcher("errorAddLeague.view");
+			RequestDispatcher  view=request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);	
 		}
 	}

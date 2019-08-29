@@ -4,13 +4,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServlet;
 
 /**
  * Application Lifecycle Listener implementation class ListenerClass
  *
  */
 @WebListener
-public class ListenerClass implements ServletContextListener {
+public class ListenerClass implements ServletContextListener  {
 
     /**
      * Default constructor. 
@@ -33,6 +34,8 @@ public class ListenerClass implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce)  { 
          // TODO Auto-generated method stub
     	System.out.println("Servlet Created");
+    	ServletContext ctx = sce.getServletContext();
+        System.out.println(ctx.getInitParameter("email"));
     	
     }
 	
