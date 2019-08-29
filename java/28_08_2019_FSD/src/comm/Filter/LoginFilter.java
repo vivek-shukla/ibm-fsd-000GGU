@@ -55,9 +55,9 @@ public class LoginFilter implements Filter {
 			}
 			else
 			{
-				System.out.println("eMAIL NOT FOUND");
+				PrintWriter writer = response.getWriter();
+				writer.println("Email Not found");
 			}
-			// pass the request along the filter chain
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

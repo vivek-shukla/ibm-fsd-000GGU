@@ -55,7 +55,8 @@ public class LoginFilter2 implements Filter {
 			chain.doFilter(request, response);
 		else
 		{
-			System.out.println("pASSWORD NOT MATCH");
+			PrintWriter writer = response.getWriter();
+			writer.println("Password not match");
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
