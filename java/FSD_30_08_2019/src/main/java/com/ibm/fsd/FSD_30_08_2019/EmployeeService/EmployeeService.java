@@ -21,13 +21,18 @@ public class EmployeeService {
 	{
 		return sessionFactoryDaoObj.listAllEmployee();
 	}
-	public Employee findBy(String criteria)
+	public List<Employee> findBy(String criteria)
 	{
 		switch(criteria)
 		{
 		case "fName": 
-			break;
+			return sessionFactoryDaoObj.findByFirstName("fName");
 		case "lName":
+			break;
+		case "email":
+			break;
+		default:
+			System.out.println("Enter a valid choice");
 			break;
 		
 		}

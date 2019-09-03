@@ -34,6 +34,19 @@ public class ServiceFactoryDao {
 		Query q = sessionObj.createQuery("from Employee");
 		sessionObj.getTransaction().commit();
 		return q.getResultList();
+	} 
+	
+	public List<Employee> findByFirstName(String fName)
+	{
+		sessionObj = sessionFactoryObj.openSession();
+		sessionObj.getTransaction().begin();
+		List<Employee> empList= sessionObj.createQuery("from Employee e where e.firstName='"+fName+"'").getResultList();
+		sessionObj.getTransaction().commit();
+		return empList;
+		
+		
+		
+		
 	}
    
    

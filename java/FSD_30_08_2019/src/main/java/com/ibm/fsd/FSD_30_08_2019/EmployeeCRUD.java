@@ -36,27 +36,33 @@ public class EmployeeCRUD {
 				displayEmployeeList(empList);
 				break;
 			case 4:
-				System.out.println("Find by \n\t1.First Name \n\t2.Lat Name \n\t3.email \n\t4.id");
+				
 				int findChoice=0;
-				findChoice = scanner.nextInt();
-				switch(findChoice)
-				{
-				  case 1: 
-					  System.out.println("Enter first name");
-					  break;
-				  case 2: 
-					  System.out.println("Enter Last Name");
-					  break;
-				  case 3: 
-					  System.out.println("Enter email");
-					  break;
-				  case 4:
-					  System.out.println("Enter id");
-					  break;
-				  default:
-					  System.out.println("Invalid choice");
-				}
-			
+				
+				do {
+					System.out.println("Find by \n\t1.First Name \n\t2.Lat Name \n\t3.email \n\t4.id");
+					findChoice = scanner.nextInt(); 
+					switch(findChoice)
+						{
+						  case 1: 
+							  System.out.println("Enter first name");
+							  
+							  break;
+						  case 2: 
+							  System.out.println("Enter Last Name");
+							  break;
+						  case 3: 
+							  System.out.println("Enter email");
+							  break;
+						  case 4:
+							  System.out.println("Enter id");
+							  break;
+						  default:
+							  System.out.println("Invalid choice");
+						}
+					
+					}while(findChoice!=0);
+				break;
 			default:
 				System.out.println("Invalid choice ");
 				break;
