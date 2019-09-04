@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+  <context:property-placeholder location="classpath:employee.properties"/>
+  <bean name="addressObj" class="com.fsd._09_2019.employee.Address">
+   <property name="street" value="3rd Cross Nagawara"></property>
+   <property name="city" value="Bangalore"></property>
+   <property name="state" value="Karnatak"></property>
+  </bean>
+  <bean name="employeeObj" class="com.fsd._09_2019.employee.Employee">
+   <constructor-arg name="id" value="1"></constructor-arg> 
+   <constructor-arg name="fName" value="vivek"></constructor-arg>
+    <constructor-arg name="lName" value="shukla"></constructor-arg>
+    <constructor-arg name="email" value="vivek@gmail.com"></constructor-arg>
+    <property name="address" ref="addressObj"></property>
+    <property name="salary" value="${salary}"></property>
+    <property name="ed" value="${id}"></property>
+  </bean>
+
+</beans>
