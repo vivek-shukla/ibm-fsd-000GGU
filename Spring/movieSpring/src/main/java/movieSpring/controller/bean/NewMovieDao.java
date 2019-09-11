@@ -47,7 +47,7 @@ public class NewMovieDao {
 	public List<NewMovieClass> searchBy(String searchCriteria)
 	{   
 		Object obj[] = {searchCriteria, searchCriteria};
-		return jdbcClass.query("select * from movie where name=? or director=?",obj, new NewMovieRowMapper());
+		return jdbcClass.query("select * from movie where name like '%?%' or director like '%?%'",obj, new NewMovieRowMapper());
 	}
 	
 

@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<form>
+<form action="movie/searchBy">
   <div class="form-group">
     <label for="exampleInputEmail1">Search </label>
     <input type="email" class="form-control" id="exampleInputEmail1" name="searchCriteria" >

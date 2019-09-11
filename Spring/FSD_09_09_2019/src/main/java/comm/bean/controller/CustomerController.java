@@ -33,7 +33,7 @@ public class CustomerController {
 	public String redirectToHome(@ModelAttribute("customerObj")Customer customerObj,Model theModel)
 	{
 		customerService.insertCustomer(customerObj);
-		return "success";
+		return "redirect:/listCustomer";
 	}
 	
 	@GetMapping("/listCustomer")

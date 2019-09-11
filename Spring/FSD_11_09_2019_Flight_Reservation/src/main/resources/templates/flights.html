@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body>
+
+<a th:href="@{/flights/showForm}"
+		class="btn btn-primary btn-sm mb-3"> Add Flight </a>
+<h1>Flight List</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Airline</th>
+    </tr>
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.id}">123</td>
+        <td th:text="${flight.name}">Spring in Action</td>
+        <td th:text="${flight.airlines}">Wrox</td>
+        
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Passenger ID</th>
+        <th>Passenger Name</th>
+        <th>Passenger Email</th>
+    </tr>
+       
+       
+        
+
+   
+</table >
+
+</body>
+</html>

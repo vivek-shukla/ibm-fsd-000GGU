@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+</head>
+<body>
+
+<form action="#"  th:action="@{/flights/save}"
+						 th:object="${flight}" method="POST">
+ <input th:field="${flight.name}"  class="form-control mb-4 col-4" placeholder="Flight name">
+  <input th:field="${flight.airlines}"  class="form-control mb-4 col-4" placeholder="Airlines name">
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</body>
+</html>
