@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+</head>
+<body>
+<div class="container">
+ <div class="jumbotron">
+
+<form action="#"  th:action="@{/receipe/save}"
+						 th:object="${receipe}" method="POST">
+ <input type="hidden" th:field="*{id}" />
+ <input th:field="${receipe.description}"  class="form-control mb-4 col-4" placeholder="Description">
+ <input th:field="${receipe.source_url}"  class="form-control mb-4 col-4" placeholder="Enter Source URL">
+ <input type="number" th:field="${receipe.cook_time}"  class="form-control mb-4 col-4" placeholder="Cook Time">
+ <select th:field="${receipe.difficulty}"  >
+   <option th:value="Easy" th:text="Easy"/>
+   <option th:value="Medium" th:text="Medium" />
+   <option th:value="Hard" th:text="Hard" />
+ </select>
+ <p th:each="ingredient : ${ingredientList}">
+ <input class="form-check-input" th:field="${receipe.ingredients}" type="checkbox" th:value="${ingredient.id}" th:text="${ingredient.description}" /> 
+ </p>
+  <input type="submit" class="btn btn-primary" value="Submit"> 
+</form>
+ </div> 
+</div>
+</body>
+</html>

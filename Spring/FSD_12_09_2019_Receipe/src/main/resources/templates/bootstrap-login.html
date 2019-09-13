@@ -1,0 +1,63 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	
+	<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Reference Bootstrap files -->
+	<link rel="stylesheet"
+		 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+	<div>
+		
+		<div id="loginbox" style="margin-top: 50px;"
+			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+			
+			<div class="panel panel-info">
+
+				<div class="panel-heading">
+					<div class="panel-title">Sign In</div>
+				</div>
+
+				<div style="padding-top: 30px" class="panel-body">
+
+					<!-- Login Form -->
+					<form action="#"  th:action="@{/authenticateUser}"
+						  method="POST">
+ 
+ <input type="text" name="username"  class="form-control mb-4 col-4" placeholder="Description">
+ <input type="password" name="password"  class="form-control mb-4 col-4" placeholder="Enter Source URL">
+
+ 
+  <input type="submit" class="btn btn-primary" value="Submit"> 
+</form>
+
+
+					    
+					   
+
+					
+
+					
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

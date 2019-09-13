@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h4 class="display-6">Recipe Description</h4>
+<hr class="my-4">
+<p th:text="${receipe.description}">
+
+<h4 class="display-6">Cook Time</h4>
+<hr class="my-4">
+<p th:text="${receipe.cook_time}">
+
+<h4 class="display-6">Serving </h4>
+<hr class="my-4">
+<p th:text="${receipe.serving}">
+<h4 class="display-6">Ingredient </h4>
+<hr class="my-4">
+<table class="table table-borderless">
+<tr>
+        <th>Ingrdient ID</th>
+        <th>Ingredient Description</th>
+        <th>Ingredient Amount</th>
+    </tr>
+
+<tr th:each="ingredient : ${receipe.ingredients}">
+        <td th:text="${ingredient.id}">123</td>
+        <td th:text="${ingredient.description}">Spring in Action</td>
+        <td th:text="${ingredient.amount}">Wrox</td>
+        <td> <a th:href="@{/ingredient/view?id=}+${ingredient.id}" class="btn btn-success"> View </a>  </td>
+      
+        
+ </tr>
+ 
+   </table>
+<!-- <h4 class="display-6">Note </h4>
+<hr class="my-4">
+<p th:text="${note.description}"> -->
+</div>
+</div>
+
+</body>
+</html>

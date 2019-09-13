@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+</head>
+<body>
+<div class="container">
+ <div class="jumbotron">
+
+<form action="#"  th:action="@{/passenger/save}"
+						 th:object="${passenger}" method="POST">
+ <input type="hidden" th:field="*{id}" />
+ <input th:field="${passenger.firstName}"  class="form-control mb-4 col-4" placeholder="First name">
+ <input th:field="${passenger.lastName}"  class="form-control mb-4 col-4" placeholder="Last name">
+ <input th:field="${passenger.email}"  class="form-control mb-4 col-4" placeholder="email">
+ <p th:each="flight : ${flights}">
+ <input th:field="${passenger.flights}" type="checkbox" value="" th:value="${flight.id}" th:text="${flight.name}" /> 
+ </p>
+  <input type="submit" class="btn btn-primary" value="Submit"> 
+</form>
+ </div> 
+</div>
+</body>
+</html>

@@ -7,12 +7,17 @@
   
 </head>
 <body>
+<div class="container">
+ <div class="jumbotron">
 
 <form action="#"  th:action="@{/flights/save}"
 						 th:object="${flight}" method="POST">
+ <input type="hidden" th:field="*{id}" />
  <input th:field="${flight.name}"  class="form-control mb-4 col-4" placeholder="Flight name">
   <input th:field="${flight.airlines}"  class="form-control mb-4 col-4" placeholder="Airlines name">
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
+ </div> 
+</div>
 </body>
 </html>

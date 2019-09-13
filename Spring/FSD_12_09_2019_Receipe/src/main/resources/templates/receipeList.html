@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h4 class="display-4">Recipe List</h4>
+<hr class="my-4">
+<table class="table table-borderless">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Serving</th>
+    </tr>
+    <tr th:each="receipe : ${receipeList}">
+        <td th:text="${receipe.id}">123</td>
+        <td th:text="${receipe.description}">Spring in Action</td>
+        <td th:text="${receipe.serving}">Wrox</td>
+        <td> <a th:href="@{/receipe/view?id=}+${receipe.id}" class="btn btn-primary"> View </a>  </td>
+        <td> <a th:href="@{/receipe/delete?id=}+${receipe.id}" onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false" class="btn btn-danger"> Delete  </a>  </td>
+        <td> <a th:href="@{/receipe/update?id=}+${receipe.id}" class="btn btn-info"> Update </a>  </td>
+       
+        
+    </tr>
+</table>
+<hr class="my-4">
+<a th:href="@{/receipe/showForm}"
+		class="btn btn-primary btn-lg " role="button"> Add Receipe </a>
+
+</div>
+
+<a th:href="@{/h2-console}"
+		class="btn btn-primary btn-lg " role="button"> See H2 </a>
+</div>
+
+<form action="#"  th:action="@{/logout}"
+						  method="POST">
+	 <input type="submit" class="btn btn-danger" value="Logout"> 
+</form>
+
+
+
+</body>
+</html>
