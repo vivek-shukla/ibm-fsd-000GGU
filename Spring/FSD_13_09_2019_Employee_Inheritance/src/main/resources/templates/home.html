@@ -12,7 +12,8 @@
 <body> 
 <div class="container">
 <div class="jumbotron"> 
-
+<div class="row">
+<div class="column-4">
 <form action="#"  th:action="@{/processForm}"
 						 th:object="${employee}" method="POST">
  <input type="hidden" th:field="*{id}" />
@@ -26,7 +27,11 @@
  </select>
   <input type="submit" class="btn btn-primary" value="Submit"> 
 </form>
-
+<div class="column-2"> 
+<a href="/logout" class="btn btn-danger" >Logout </a>
+</div>
+</div>
+</div> 
 </div>
 </div>
 
