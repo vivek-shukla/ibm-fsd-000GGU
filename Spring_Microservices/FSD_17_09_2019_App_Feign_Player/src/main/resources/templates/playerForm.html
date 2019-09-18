@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h4 class="display-4">Add User</h4>
+<hr class="my-4">
+
+<form action="#"  th:action="@{/playerSave}"
+						 th:object="${player}" method="POST">
+ <input type="text" class="form-control mb-4 col-4" placeholder="First Name" th:field="*{firstName}" />
+ <input type="text" class="form-control mb-4 col-4" placeholder="last Name" th:field="*{lastName}" />
+ <input type="email" class="form-control mb-4 col-4" placeholder="email" th:field="*{email}" />
+ <input type="submit" class="btn btn-primary" value="Submit"> 
+</form>
+
+
+<div>
+<br>
+<br>
+<h4 class="display-5">Find Player by First Name or Last Name or Email</h4>
+<hr class="my-4">
+ <form action="/findBy" method="post">
+ <div class="form-group mx-sm-3 mb-2">
+ <input class="form-control col-xs-3" name="criteria" placeholder="Enter criteria to search"/>
+ </div>
+ <input type="submit" class="btn btn-info mb-2" value="Search">
+ </form>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h4 class="display-4">User List</h4>
+<hr class="my-4">
+<table class="table table-borderless">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="player : ${playerList}">
+        <td th:text="${player.firstName}">123</td>
+        <td th:text="${player.lastName}">Spring in Action</td>
+        <td th:text="${player.email}">Wrox</td>
+        
+        
+    </tr>
+</table>
+<hr class="my-4">
+<a th:href="@{/showPlayerForm}"
+		class="btn btn-primary btn-lg " role="button"> Add User </a> 
+		
+<div>
+<br>
+<br>
+</div>
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>

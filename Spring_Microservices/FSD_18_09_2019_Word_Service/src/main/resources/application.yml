@@ -1,0 +1,49 @@
+---
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8001
+      
+server:
+  port: 0
+  
+eureka:
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+---
+spring:
+  profiles: subject
+  application:
+    name: subject
+words: I,You,He,She,It
+  
+---
+spring:
+  profiles: verb
+  application:
+    name: verb
+words: ran,knew,had,saw,bought
+
+---
+spring:
+  profiles: article
+  application:
+    name: article
+words: a,the
+
+---
+spring:
+  profiles: adjective
+  application:
+    name: adjective
+words: reasonable,leaky,suspicious,ordinary,unlikely
+
+---
+spring:
+  profiles: noun
+  application:
+    name: noun
+words: boat,book,vote,seat,backpack,partition,groundhog

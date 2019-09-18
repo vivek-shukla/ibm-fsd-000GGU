@@ -1,3 +1,4 @@
+
 server:
   port: 1234
 spring:
@@ -5,6 +6,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/dnilay/java_fsd_2
+          uri: https://github.com/vivek-shukla/ibm-fsd-000GGU/tree/master/yml/application/
   application:
-    name: myApp
+    name: config-server

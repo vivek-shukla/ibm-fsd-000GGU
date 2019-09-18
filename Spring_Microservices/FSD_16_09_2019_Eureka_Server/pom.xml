@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>FSD_16_09_2019_Microservice</artifactId>
+	<artifactId>FSD_16_09_2019_Eureka_Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>FSD_16_09_2019_Microservice</name>
+	<name>FSD_16_09_2019_Eureka_Server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,7 +24,14 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

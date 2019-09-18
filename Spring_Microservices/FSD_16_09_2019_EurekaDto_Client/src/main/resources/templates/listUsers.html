@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h4 class="display-4">User List</h4>
+<hr class="my-4">
+<table class="table table-borderless">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.firstName}">123</td>
+        <td th:text="${user.lastName}">Spring in Action</td>
+        <td th:text="${user.email}">Wrox</td>
+         <td> <a th:href="@{delete?email=}+${user.email}" onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false" class="btn btn-danger"> Delete  </a>  </td>
+        <td> <a th:href="@{update?email=}+${user.email}" class="btn btn-info"> Update </a>  </td>
+        
+        
+    </tr>
+</table>
+<hr class="my-4">
+<a th:href="@{/showUserForm}"
+		class="btn btn-primary btn-lg " role="button"> Add User </a> 
+		
+<div>
+<br>
+<br>
+<h4 class="display-5">Find users by First Name</h4>
+<hr class="my-4">
+ <form action="/usersFirstName" method="post">
+ <div class="form-group mx-sm-3 mb-2">
+ <input class="form-control col-xs-3" name="firstName" placeholder="Enter First Name"/>
+ </div>
+ <input type="submit" class="btn btn-info mb-2" value="Search">
+ </form>
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
