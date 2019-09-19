@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h6 class="display-6"> Appointment Details are  </h6>
+<hr class="my-4">
+<table class="table table-borderless">
+    <tr>
+        <th>Patient Name</th>
+        <th>Assigned Doctor</th>
+        <th>Disease</th>
+    </tr>
+    <tr>
+        <td th:text="${session.patient.firstName}">123</td>
+        <td th:text="${session.assignedDoctor}">Spring in Action</td>
+        <td th:text="${session.patient.disease}">Wrox</td>
+        
+       
+    </tr>
+</table>
+
+<div>
+<br>
+<br>
+ <a th:href="@{/confirmAppointment}"
+		class="btn btn-success" role="button"> Confirm Appointment </a> 
+</div>
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>

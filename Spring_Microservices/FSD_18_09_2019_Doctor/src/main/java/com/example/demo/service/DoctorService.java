@@ -23,6 +23,11 @@ public class DoctorService {
 	{
 		doctorRepository.save(doctorObj);
 		return doctorObj;
+	} 
+	
+	public List<Doctor> findAllByCriteria(String criteria)
+	{
+		return doctorRepository.findAllByFirstNameOrLastNameOrSpecialityContaining(criteria, criteria, criteria);
 	}
 
 }

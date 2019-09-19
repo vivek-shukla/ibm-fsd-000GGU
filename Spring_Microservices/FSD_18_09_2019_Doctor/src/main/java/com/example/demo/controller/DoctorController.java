@@ -26,7 +26,13 @@ public class DoctorController {
 	@PostMapping("/doctors")
 	public ResponseEntity<Doctor> insertDoctor(@RequestBody Doctor doctor)
 	{
-		return ResponseEntity.ok(doctor);
+		return ResponseEntity.ok(doctorService.insertPatient(doctor));
+	}
+	
+	@GetMapping("/doctors/findBy/{criteria}")
+	public ResponseEntity<List<Doctor>> getAllByCriteria(@PathVariable("criteria") String criteria)
+	{
+		return ResponseEntity.ok(doctorService.getAllBySpeciality(criteria));
 	}
 
 }

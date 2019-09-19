@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>first thymeleaf page</title> 
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+</head>
+<body> 
+<div class="container">
+<div class="jumbotron"> 
+
+<h4 class="display-4" th:text="${session.patient.firstName}"> </h4>
+<h6 class="display-6"> Doctors available for your disease are </h6>
+<hr class="my-4">
+<table class="table table-borderless">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Speciality</th>
+    </tr>
+    <tr th:each="doctor : ${doctorList}">
+        <td th:text="${doctor.firstName}">123</td>
+        <td th:text="${doctor.lastName}">Spring in Action</td>
+        <td th:text="${doctor.speciality}">Wrox</td>
+        
+       <td> <a th:href="@{/fixAppointment?doctor=}+${doctor.firstName}"
+		class="btn btn-info " role="button"> Fix Appointment </a> </td>
+    </tr>
+</table>
+
+<div>
+<br>
+<br>
+</div>
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
